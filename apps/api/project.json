@@ -360,7 +360,7 @@
             "executor": "nx:run-commands",
             "options": {
                 "commands": [
-                    "_zitadel_root=\"${PWD}\"; cd internal/api/ui/login/static/resources && PATH=\"${_zitadel_root}/.artifacts/bin/$(go env GOOS)/$(go env GOARCH):$PATH\" go generate generate.go",
+                    "pnpm sass internal/api/ui/login/static/resources/themes/scss/zitadel.scss internal/api/ui/login/static/resources/themes/zitadel/css/zitadel.css",
                     "_zitadel_root=\"${PWD}\"; cd internal/api/ui/login/statik && PATH=\"${_zitadel_root}/.artifacts/bin/$(go env GOOS)/$(go env GOARCH):$PATH\" go generate generate.go",
                     "_zitadel_root=\"${PWD}\"; cd internal/notification/statik && PATH=\"${_zitadel_root}/.artifacts/bin/$(go env GOOS)/$(go env GOARCH):$PATH\" go generate generate.go",
                     "_zitadel_root=\"${PWD}\"; cd internal/statik && PATH=\"${_zitadel_root}/.artifacts/bin/$(go env GOOS)/$(go env GOARCH):$PATH\" go generate generate.go"
