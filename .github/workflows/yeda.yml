@@ -31,7 +31,9 @@ jobs:
       - uses: docker/setup-buildx-action@v3
       - run: pnpm install --frozen-lockfile
       - name: Verify Login V2
-        run: pnpm nx run-many --nxBail --projects @zitadel/login @zitadel/client --targets lint test-unit build
+        run: |
+          pnpm nx run-many --nxBail --projects @zitadel/login @zitadel/client --targets lint test-unit build
+          bash apps/login/scripts/verify-root-redirect.sh
       - name: Verify and package backend
         run: |
           pnpm nx run @zitadel/api:test-unit
