@@ -360,10 +360,10 @@
             "executor": "nx:run-commands",
             "options": {
                 "commands": [
-                    "PATH=\"${PWD}/.artifacts/bin/$(go env GOOS)/$(go env GOARCH):$PATH\" go generate internal/api/ui/login/static/resources/generate.go",
-                    "PATH=\"${PWD}/.artifacts/bin/$(go env GOOS)/$(go env GOARCH):$PATH\" go generate internal/api/ui/login/statik/generate.go",
-                    "PATH=\"${PWD}/.artifacts/bin/$(go env GOOS)/$(go env GOARCH):$PATH\" go generate internal/notification/statik/generate.go",
-                    "PATH=\"${PWD}/.artifacts/bin/$(go env GOOS)/$(go env GOARCH):$PATH\" go generate internal/statik/generate.go"
+                    "_zitadel_root=\"${PWD}\"; cd internal/api/ui/login/static/resources && PATH=\"${_zitadel_root}/.artifacts/bin/$(go env GOOS)/$(go env GOARCH):$PATH\" go generate generate.go",
+                    "_zitadel_root=\"${PWD}\"; cd internal/api/ui/login/statik && PATH=\"${_zitadel_root}/.artifacts/bin/$(go env GOOS)/$(go env GOARCH):$PATH\" go generate generate.go",
+                    "_zitadel_root=\"${PWD}\"; cd internal/notification/statik && PATH=\"${_zitadel_root}/.artifacts/bin/$(go env GOOS)/$(go env GOARCH):$PATH\" go generate generate.go",
+                    "_zitadel_root=\"${PWD}\"; cd internal/statik && PATH=\"${_zitadel_root}/.artifacts/bin/$(go env GOOS)/$(go env GOARCH):$PATH\" go generate generate.go"
                 ],
                 "parallel": false
             },

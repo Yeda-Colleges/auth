@@ -12,13 +12,13 @@ import { getAllowedLanguages } from "@/lib/zitadel";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { Lato } from "next/font/google";
+import { Rubik } from "next/font/google";
 import { headers } from "next/headers";
 import React, { Suspense } from "react";
 
-const lato = Lato({
-  weight: ["400", "700", "900"],
-  subsets: ["latin"],
+const rubik = Rubik({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["cyrillic", "latin"],
 });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -43,16 +43,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   }
 
   return (
-    <html className={`${lato.className}`} suppressHydrationWarning>
+    <html className={`${rubik.className}`} suppressHydrationWarning>
       <head />
       <body>
         <ThemeProvider>
           <Tooltip.Provider>
             <Suspense
               fallback={
-                <BackgroundWrapper
-                  className={`bg-background-light-600 dark:bg-background-dark-600 relative flex min-h-screen flex-col justify-center`}
-                >
+                <BackgroundWrapper className="yeda-auth-page relative flex min-h-screen flex-col justify-center">
                   <div className="relative mx-auto w-full max-w-[440px] py-8">
                     <Skeleton>
                       <div className="h-40"></div>
@@ -65,9 +63,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               }
             >
               <LanguageProvider>
-                <BackgroundWrapper
-                  className={`bg-background-light-600 dark:bg-background-dark-600 relative flex min-h-screen flex-col justify-center`}
-                >
+                <BackgroundWrapper className="yeda-auth-page relative flex min-h-screen flex-col justify-center">
                   <div className="relative mx-auto w-full max-w-[1100px] py-8">
                     <div>{children}</div>
                     <div className="mx-auto flex max-w-[440px] flex-row items-center justify-end space-x-4 px-4 py-4 md:max-w-full md:px-8">
