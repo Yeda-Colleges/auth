@@ -64,6 +64,16 @@ const nextConfig = {
   // },
   // Better error handling for production builds
   poweredByHeader: false,
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/ui/v2/login",
+        permanent: false,
+        basePath: false,
+      },
+    ];
+  },
   async headers() {
     return [
       {
