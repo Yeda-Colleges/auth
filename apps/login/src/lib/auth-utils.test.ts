@@ -5,12 +5,12 @@ describe("auth-utils", () => {
   describe("isValidLanguage", () => {
     it("should return true for valid language codes", () => {
       expect(isValidLanguage("en")).toBe(true);
-      expect(isValidLanguage("de")).toBe(true);
-      expect(isValidLanguage("fr")).toBe(true);
-      expect(isValidLanguage("zh")).toBe(true);
+      expect(isValidLanguage("he")).toBe(true);
     });
 
     it("should return false for invalid language codes", () => {
+      expect(isValidLanguage("de")).toBe(false);
+      expect(isValidLanguage("fr")).toBe(false);
       expect(isValidLanguage("invalid")).toBe(false);
       expect(isValidLanguage("xx")).toBe(false);
       expect(isValidLanguage("")).toBe(false);
@@ -18,7 +18,7 @@ describe("auth-utils", () => {
 
     it("should be case-insensitive", () => {
       expect(isValidLanguage("EN")).toBe(true);
-      expect(isValidLanguage("De")).toBe(true);
+      expect(isValidLanguage("He")).toBe(true);
     });
   });
 
@@ -29,18 +29,18 @@ describe("auth-utils", () => {
     });
 
     it("should extract valid language from simple locale codes", () => {
-      expect(getValidLocaleFromUILocales(["de"])).toBe("de");
-      expect(getValidLocaleFromUILocales(["en", "de"])).toBe("en");
+      expect(getValidLocaleFromUILocales(["he"])).toBe("he");
+      expect(getValidLocaleFromUILocales(["en", "he"])).toBe("en");
     });
 
     it("should extract language code from language tags", () => {
-      expect(getValidLocaleFromUILocales(["de-CH"])).toBe("de");
+      expect(getValidLocaleFromUILocales(["he-IL"])).toBe("he");
       expect(getValidLocaleFromUILocales(["en-US"])).toBe("en");
-      expect(getValidLocaleFromUILocales(["zh-CN"])).toBe("zh");
+      expect(getValidLocaleFromUILocales(["zh-CN"])).toBeNull();
     });
 
     it("should return first valid language when multiple provided", () => {
-      expect(getValidLocaleFromUILocales(["xx-XX", "de", "en"])).toBe("de");
+      expect(getValidLocaleFromUILocales(["xx-XX", "he", "en"])).toBe("he");
     });
 
     it("should return null when no valid languages found", () => {
@@ -48,7 +48,7 @@ describe("auth-utils", () => {
     });
 
     it("should handle case-insensitive matching", () => {
-      expect(getValidLocaleFromUILocales(["DE"])).toBe("de");
+      expect(getValidLocaleFromUILocales(["HE"])).toBe("he");
       expect(getValidLocaleFromUILocales(["En-US"])).toBe("en");
     });
   });

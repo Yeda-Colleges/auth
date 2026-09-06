@@ -1,0 +1,10 @@
+# Registers Hebrew in ZITADEL's filesystem-based supported-language discovery.
+# Yeda uses Login V2 (apps/login/locales/he.json and internal/query/v2-default.json).
+# Untranslated legacy Login V1 messages use the upstream English fallback.
+Login:
+  Title: ברוכים השבים!
+  Description: הזינו את פרטי הכניסה שלכם.
+  LoginNameLabel: שם כניסה
+  UsernamePlaceHolder: שם משתמש
+  RegisterButtonText: הרשמה
+  NextButtonText: המשך

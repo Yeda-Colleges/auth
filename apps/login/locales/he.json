@@ -1,0 +1,476 @@
+{
+  "common": {
+    "back": "חזרה",
+    "title": "כניסה עם Zitadel"
+  },
+  "accounts": {
+    "title": "חשבונות",
+    "description": "בחרו את החשבון שברצונכם להשתמש בו.",
+    "addAnother": "הוספת חשבון נוסף",
+    "noResults": "לא נמצאו חשבונות",
+    "verified": "מאומת",
+    "expired": "פג תוקף"
+  },
+  "logout": {
+    "title": "יציאה",
+    "description": "בחרו חשבון כדי לסיים את ההפעלה",
+    "noResults": "לא נמצאו חשבונות",
+    "clear": "סיום ההפעלה",
+    "verifiedAt": "פעילות אחרונה: {time}",
+    "success": {
+      "title": "היציאה הושלמה",
+      "description": "יצאתם מהחשבון בהצלחה."
+    }
+  },
+  "loginname": {
+    "title": "ברוכים השבים!",
+    "description": "הזינו את פרטי הכניסה שלכם.",
+    "register": "רישום משתמש חדש",
+    "submit": "המשך",
+    "labels": {
+      "loginname": "שם כניסה",
+      "username": "שם משתמש",
+      "usernameOrPhoneNumber": "שם משתמש או מספר טלפון",
+      "usernameOrEmail": "שם משתמש או דוא״ל"
+    },
+    "required": {
+      "loginName": "זהו שדה חובה"
+    },
+    "errors": {
+      "internalError": "אירעה שגיאה פנימית",
+      "couldNotGetLoginSettings": "לא ניתן לקבל את הגדרות הכניסה",
+      "couldNotSearchUsers": "לא ניתן לחפש משתמשים",
+      "couldNotGetDomain": "לא ניתן לקבל את הדומיין",
+      "couldNotGetHost": "לא ניתן לקבל את כתובת השרת",
+      "couldNotStartIDPFlow": "לא ניתן להתחיל את תהליך הכניסה אצל ספק הזהות",
+      "moreThanOneUserFound": "נמצא יותר ממשתמש אחד. הזינו מזהה ייחודי.",
+      "userNotFound": "המשתמש לא נמצא במערכת",
+      "couldNotCreateSession": "לא ניתן ליצור הפעלה עבור המשתמש",
+      "initialUserNotSupported": "משתמש שטרם אותחל אינו נתמך",
+      "localAuthenticationNotAllowed": "אימות מקומי אינו מורשה. פנו למנהל המערכת לקבלת מידע נוסף.",
+      "passkeysNotAllowed": "השימוש במפתחות גישה אינו מורשה. פנו למנהל המערכת לקבלת מידע נוסף.",
+      "couldNotFindIdentityProvider": "לא ניתן למצוא את ספק הזהות.",
+      "userNotActive": "המשתמש אינו פעיל. פנו למנהל המערכת לקבלת מידע נוסף."
+    }
+  },
+  "zitadel": {
+    "errors": {
+      "errorOccured": "אירעה שגיאה",
+      "multipleUsersFound": "נמצאו מספר משתמשים",
+      "userNotFound": "המשתמש לא נמצא במערכת"
+    }
+  },
+  "password": {
+    "verify": {
+      "title": "סיסמה",
+      "description": "הזינו את הסיסמה שלכם.",
+      "resetPassword": "איפוס סיסמה",
+      "submit": "המשך",
+      "labels": {
+        "password": "סיסמה"
+      },
+      "required": {
+        "password": "זהו שדה חובה"
+      },
+      "errors": {
+        "couldNotVerifyPassword": "לא ניתן לאמת את הסיסמה",
+        "couldNotResetPassword": "לא ניתן לאפס את הסיסמה"
+      },
+      "info": {
+        "passwordResetSent": "הסיסמה אופסה. בדקו את הדוא״ל שלכם"
+      }
+    },
+    "set": {
+      "title": "הגדרת סיסמה",
+      "description": "הגדירו סיסמה לחשבון שלכם",
+      "codeSent": "קוד חדש נשלח לכתובת הדוא״ל שלכם.",
+      "noCodeReceived": "לא קיבלתם קוד?",
+      "resend": "שליחת הקוד מחדש",
+      "submit": "המשך",
+      "labels": {
+        "code": "קוד",
+        "newPassword": "סיסמה חדשה",
+        "confirmPassword": "אישור סיסמה"
+      },
+      "required": {
+        "code": "זהו שדה חובה",
+        "newPassword": "יש להזין סיסמה",
+        "confirmPassword": "זהו שדה חובה"
+      },
+      "errors": {
+        "couldNotSetPassword": "לא ניתן להגדיר את הסיסמה",
+        "couldNotResetPassword": "לא ניתן לאפס את הסיסמה",
+        "couldNotVerifyPassword": "לא ניתן לאמת את הסיסמה"
+      }
+    },
+    "change": {
+      "title": "שינוי סיסמה",
+      "description": "הגדירו סיסמה לחשבון שלכם",
+      "submit": "המשך",
+      "labels": {
+        "currentPassword": "סיסמה נוכחית",
+        "newPassword": "סיסמה חדשה",
+        "confirmPassword": "אישור סיסמה"
+      },
+      "required": {
+        "currentPassword": "יש להזין את הסיסמה הנוכחית",
+        "newPassword": "יש להזין סיסמה חדשה",
+        "confirmPassword": "זהו שדה חובה"
+      },
+      "errors": {
+        "currentPasswordInvalid": "הסיסמה הנוכחית שגויה.",
+        "couldNotChangePassword": "לא ניתן לשנות את הסיסמה",
+        "couldNotVerifyPassword": "לא ניתן לאמת את הסיסמה",
+        "unknownError": "שגיאה לא ידועה"
+      }
+    },
+    "complexity": {
+      "length": "הסיסמה חייבת להכיל לפחות {minLength} תווים.",
+      "hasSymbol": "הסיסמה חייבת לכלול סימן.",
+      "hasNumber": "הסיסמה חייבת לכלול ספרה.",
+      "hasUppercase": "הסיסמה חייבת לכלול אות לטינית גדולה.",
+      "hasLowercase": "הסיסמה חייבת לכלול אות לטינית קטנה.",
+      "equals": "אישור הסיסמה תואם.",
+      "matches": "תואם",
+      "doesNotMatch": "לא תואם"
+    },
+    "errors": {
+      "noHostFound": "לא נמצאה כתובת שרת",
+      "couldNotSendResetLink": "לא ניתן לשלוח קישור לאיפוס הסיסמה",
+      "couldNotCreateSessionForUser": "לא ניתן ליצור הפעלה עבור המשתמש",
+      "couldNotVerifyPassword": "לא ניתן לאמת את הסיסמה",
+      "failedToAuthenticate": "האימות נכשל. בוצעו {failedAttempts} מתוך {maxPasswordAttempts} ניסיונות להזנת סיסמה.{lockoutMessage}",
+      "failedToAuthenticateNoLimit": "האימות נכשל.",
+      "accountLockedContactAdmin": " פנו למנהל המערכת כדי לבטל את נעילת החשבון",
+      "userNotFound": "המשתמש לא נמצא במערכת",
+      "initialUserNotSupported": "משתמש שטרם אותחל אינו נתמך",
+      "userInitialStateNotSupported": "מצב משתמש שטרם אותחל אינו נתמך",
+      "codeOrVerificationRequired": "יש להזין קוד או להשלים בדיקת אימות משתמש תקפה",
+      "verificationRequired": "יש להשלים בדיקת אימות משתמש",
+      "couldNotLoadSession": "לא ניתן לטעון את ההפעלה",
+      "couldNotLoadAuthMethods": "לא ניתן לטעון את שיטות האימות",
+      "failedPrecondition": "תנאי מוקדם לא התקיים",
+      "sessionNotValid": "ההפעלה אינה תקפה",
+      "passwordVerificationMissing": "חסר אימות סיסמה.",
+      "passwordVerificationTooOld": "תוקף אימות הסיסמה פג. אמתו שוב את הסיסמה.",
+      "passwordResetNotAllowed": "איפוס סיסמה אינו מורשה. פנו למנהל המערכת לקבלת מידע נוסף."
+    }
+  },
+  "idp": {
+    "title": "כניסה באמצעות SSO",
+    "description": "בחרו אחד מהספקים הבאים כדי להיכנס",
+    "orSignInWith": "או היכנסו באמצעות",
+    "signInWithApple": "כניסה באמצעות Apple",
+    "signInWithGoogle": "כניסה באמצעות Google",
+    "signInWithAzureAD": "כניסה באמצעות AzureAD",
+    "signInWithGithub": "כניסה באמצעות GitHub",
+    "signInWithGitlab": "כניסה באמצעות GitLab",
+    "signInWithZitadel": "כניסה באמצעות Zitadel",
+    "loginError": {
+      "title": "הכניסה נכשלה",
+      "description": "אירעה שגיאה בעת הניסיון להיכנס."
+    },
+    "linkingError": {
+      "title": "קישור החשבון נכשל",
+      "description": "אירעה שגיאה בעת הניסיון לקשר את החשבון."
+    },
+    "completeRegister": {
+      "title": "השלמת הפרטים",
+      "description": "כדי להשלים את הרישום יש להזין כתובת דוא״ל ושם."
+    },
+    "accountNotFound": {
+      "title": "החשבון לא נמצא",
+      "description": "לא נמצא חשבון המשויך לפרטי הכניסה שלכם אצל ספק הזהות.",
+      "info": "לא נמצא חשבון קיים. היכנסו באמצעות חשבון קיים או פנו למנהל המערכת לקבלת עזרה.",
+      "backToLogin": "חזרה לכניסה"
+    },
+    "registrationFailed": {
+      "title": "הרישום אינו זמין",
+      "description": "לא ניתן להשלים את תהליך הרישום.",
+      "info": "לא ניתן לקבוע את הארגון לרישום. פנו למנהל המערכת לקבלת עזרה.",
+      "backToLogin": "חזרה לכניסה"
+    },
+    "processing": {
+      "message": "האימות מתבצע...",
+      "noRedirect": "השרת לא החזיר הפניה או שגיאה",
+      "unexpectedError": "אירעה שגיאה בלתי צפויה"
+    },
+    "errors": {
+      "missingParameters": "חסרים פרמטרים נדרשים",
+      "missingIdpInfo": "חסר מידע על ספק הזהות",
+      "idpNotFound": "ספק הזהות לא נמצא",
+      "linkingNotAllowed": "קישור חשבונות אינו מורשה עבור ספק זהות זה",
+      "linkingFailed": "קישור ספק הזהות לחשבון נכשל",
+      "autoLinkingFailed": "קישור החשבון באופן אוטומטי נכשל",
+      "userCreationFailed": "יצירת חשבון המשתמש נכשלה",
+      "orgResolutionFailed": "לא ניתן לקבוע את הארגון לרישום",
+      "sessionCreationFailed": "לא ניתן ליצור הפעלה או לקבוע הפניה",
+      "unknownError": "אירעה שגיאה לא ידועה"
+    }
+  },
+  "ldap": {
+    "title": "כניסה באמצעות LDAP",
+    "description": "הזינו את פרטי הכניסה שלכם ל-LDAP.",
+    "submit": "המשך",
+    "labels": {
+      "username": "שם משתמש",
+      "password": "סיסמה"
+    },
+    "required": {
+      "username": "זהו שדה חובה",
+      "password": "זהו שדה חובה"
+    }
+  },
+  "mfa": {
+    "verify": {
+      "title": "אימות הזהות שלכם",
+      "description": "בחרו אחד מגורמי האימות הבאים.",
+      "noResults": "אין גורמי אימות נוספים הזמינים להגדרה."
+    },
+    "set": {
+      "title": "הגדרת אימות דו-שלבי",
+      "description": "בחרו אחד מגורמי האימות הנוספים הבאים.",
+      "skip": "דילוג"
+    }
+  },
+  "otp": {
+    "verify": {
+      "title": "אימות דו-שלבי",
+      "totpDescription": "הזינו את הקוד מיישומון האימות שלכם.",
+      "smsDescription": "הזינו את הקוד שקיבלתם במסרון.",
+      "emailDescription": "הזינו את הקוד שקיבלתם בדוא״ל.",
+      "noCodeReceived": "לא קיבלתם קוד?",
+      "resendCode": "שליחת הקוד מחדש",
+      "submit": "המשך",
+      "labels": {
+        "code": "קוד"
+      },
+      "required": {
+        "code": "זהו שדה חובה"
+      }
+    },
+    "set": {
+      "title": "הגדרת אימות דו-שלבי",
+      "totpDescription": "סרקו את קוד ה-QR באמצעות יישומון האימות שלכם.",
+      "smsDescription": "הזינו את מספר הטלפון שלכם כדי לקבל קוד במסרון.",
+      "emailDescription": "הזינו את כתובת הדוא״ל שלכם כדי לקבל קוד בדוא״ל.",
+      "totpRegisterDescription": "סרקו את קוד ה-QR או עברו לכתובת באופן ידני.",
+      "submit": "המשך",
+      "labels": {
+        "code": "קוד"
+      },
+      "required": {
+        "code": "זהו שדה חובה"
+      }
+    },
+    "errors": {
+      "couldNotRequestChallenge": "לא ניתן לבקש קוד חד-פעמי",
+      "couldNotVerifyCode": "לא ניתן לאמת את הקוד החד-פעמי"
+    }
+  },
+  "passkey": {
+    "verify": {
+      "title": "אימות באמצעות מפתח גישה",
+      "description": "המכשיר יבקש טביעת אצבע, זיהוי פנים או פתיחת נעילת המסך",
+      "usePassword": "שימוש בסיסמה",
+      "submit": "המשך",
+      "errors": {
+        "couldNotRequestChallenge": "לא ניתן להתחיל אימות באמצעות מפתח גישה",
+        "couldNotVerifyPasskey": "לא ניתן לאמת את מפתח הגישה",
+        "noResponseReceived": "אימות מפתח הגישה נכשל — לא התקבלה תגובה",
+        "noRedirectProvided": "אימות מפתח הגישה הושלם אך לא התקבלה הפניה",
+        "couldNotRetrievePasskey": "אירעה שגיאה בעת קבלת מפתח הגישה",
+        "verificationCancelled": "אימות מפתח הגישה בוטל",
+        "verificationFailed": "אירעה שגיאה במהלך אימות מפתח הגישה",
+        "couldNotFindSession": "לא ניתן למצוא את ההפעלה",
+        "couldNotUpdateSession": "לא ניתן לעדכן את ההפעלה",
+        "userNotFound": "המשתמש לא נמצא במערכת",
+        "couldNotDetermineRedirect": "לא ניתן לקבוע את כתובת ההפניה לאחר אימות מפתח הגישה"
+      }
+    },
+    "set": {
+      "title": "הגדרת מפתח גישה",
+      "description": "המכשיר יבקש טביעת אצבע, זיהוי פנים או פתיחת נעילת המסך",
+      "info": {
+        "description": "מפתח גישה הוא שיטת אימות במכשיר, כגון טביעת אצבע, Apple FaceID או אמצעי דומה. ",
+        "link": "אימות באמצעות מפתח גישה"
+      },
+      "skip": "דילוג",
+      "submit": "המשך"
+    }
+  },
+  "u2f": {
+    "verify": {
+      "title": "אימות דו-שלבי",
+      "description": "אמתו את החשבון באמצעות המכשיר שלכם."
+    },
+    "set": {
+      "title": "הגדרת אימות דו-שלבי",
+      "description": "הגדירו מכשיר כגורם אימות נוסף.",
+      "submit": "המשך"
+    }
+  },
+  "register": {
+    "methods": {
+      "passkey": "מפתח גישה",
+      "password": "סיסמה"
+    },
+    "disabled": {
+      "title": "הרישום מושבת",
+      "description": "הרישום מושבת. פנו למנהל המערכת."
+    },
+    "missingdata": {
+      "title": "חסרים פרטים",
+      "description": "הזינו כתובת דוא״ל, שם פרטי ושם משפחה כדי להירשם."
+    },
+    "title": "הרשמה",
+    "description": "צרו חשבון Zitadel.",
+    "noMethodAvailableWarning": "אין שיטת אימות זמינה. פנו למנהל המערכת.",
+    "selectMethod": "בחרו את שיטת האימות הרצויה",
+    "agreeTo": "כדי להירשם יש להסכים לתנאי השימוש",
+    "termsOfService": "תנאי שימוש",
+    "privacyPolicy": "מדיניות פרטיות",
+    "submit": "המשך",
+    "password": {
+      "title": "הגדרת סיסמה",
+      "description": "הגדירו סיסמה לחשבון שלכם",
+      "submit": "המשך",
+      "labels": {
+        "password": "סיסמה",
+        "confirmPassword": "אישור סיסמה"
+      },
+      "required": {
+        "password": "יש להזין סיסמה",
+        "confirmPassword": "זהו שדה חובה"
+      }
+    },
+    "labels": {
+      "firstname": "שם פרטי",
+      "lastname": "שם משפחה",
+      "email": "דוא״ל"
+    },
+    "required": {
+      "firstname": "זהו שדה חובה",
+      "lastname": "זהו שדה חובה",
+      "email": "זהו שדה חובה"
+    },
+    "errors": {
+      "couldNotCreateUser": "לא ניתן ליצור משתמש",
+      "couldNotCreateSession": "לא ניתן ליצור הפעלה",
+      "userNotFound": "המשתמש לא נמצא במערכת",
+      "couldNotLinkIDP": "לא ניתן לקשר את ספק הזהות למשתמש",
+      "couldNotRegisterUser": "לא ניתן לרשום את המשתמש"
+    }
+  },
+  "invite": {
+    "title": "הזמנת משתמש",
+    "description": "הזינו את כתובת הדוא״ל ואת שם המשתמש שברצונכם להזמין.",
+    "info": "המשתמש יקבל דוא״ל עם הנחיות נוספות.",
+    "notAllowed": "ההגדרות שלכם אינן מאפשרות להזמין משתמשים.",
+    "submit": "המשך",
+    "success": {
+      "title": "המשתמש הוזמן",
+      "description": "הדוא״ל נשלח בהצלחה.",
+      "verified": "המשתמש הוזמן וכבר אימת את כתובת הדוא״ל שלו.",
+      "notVerifiedYet": "המשתמש הוזמן ויקבל דוא״ל עם הנחיות נוספות.",
+      "submit": "הזמנת משתמש נוסף"
+    }
+  },
+  "signedin": {
+    "title": "ברוכים הבאים, {user}!",
+    "description": "נכנסתם לחשבון.",
+    "continue": "המשך",
+    "error": {
+      "title": "שגיאה",
+      "description": "אירעה שגיאה בעת הניסיון להיכנס."
+    }
+  },
+  "verify": {
+    "userIdMissing": "לא סופק מזהה משתמש",
+    "successTitle": "המשתמש אומת",
+    "successDescription": "המשתמש אומת בהצלחה.",
+    "successContinue": "המשך",
+    "setupAuthenticator": "הגדרת אמצעי אימות",
+    "verify": {
+      "title": "אימות משתמש",
+      "description": "הזינו את הקוד שנשלח בדוא״ל האימות.",
+      "noCodeReceived": "לא קיבלתם קוד?",
+      "resendCode": "שליחת הקוד מחדש",
+      "codeSent": "קוד חדש נשלח כעת לכתובת הדוא״ל שלכם.",
+      "submit": "המשך",
+      "labels": {
+        "code": "קוד"
+      },
+      "required": {
+        "code": "זהו שדה חובה"
+      }
+    },
+    "errors": {
+      "couldNotResendEmail": "לא ניתן לשלוח את הדוא״ל מחדש",
+      "couldNotVerifyUser": "לא ניתן לאמת את המשתמש",
+      "couldNotVerifyInvite": "לא ניתן לאמת את ההזמנה",
+      "couldNotVerifyEmail": "לא ניתן לאמת את כתובת הדוא״ל",
+      "couldNotVerify": "לא ניתן לבצע אימות",
+      "couldNotLoadUser": "לא ניתן לטעון את המשתמש",
+      "couldNotLoadAuthenticators": "לא ניתן לטעון את אמצעי האימות הזמינים",
+      "couldNotCreateSession": "לא ניתן ליצור הפעלה",
+      "noHostFound": "לא נמצאה כתובת שרת",
+      "userAlreadyVerified": "המשתמש כבר אומת",
+      "couldNotResendInvite": "לא ניתן לשלוח את ההזמנה מחדש",
+      "inviteSendFailed": "שליחת דוא״ל ההזמנה נכשלה",
+      "emailSendFailed": "שליחת דוא״ל האימות נכשלה",
+      "contextMissing": "אירעה שגיאה. נסו שוב."
+    }
+  },
+  "authenticator": {
+    "title": "בחירת שיטת אימות",
+    "description": "בחרו את שיטת האימות הרצויה",
+    "noMethodsAvailable": "אין שיטות אימות זמינות",
+    "allSetup": "כבר הגדרתם אמצעי אימות",
+    "linkWithIDP": "או קשרו חשבון אצל ספק זהות",
+    "methods": {
+      "totp": "יישומון אימות",
+      "u2f": "גורם שני אוניברסלי",
+      "otpEmail": "קוד בדוא״ל",
+      "otpSms": "קוד במסרון",
+      "passkey": "מפתחות גישה",
+      "password": "סיסמה"
+    }
+  },
+  "device": {
+    "usercode": {
+      "title": "קוד מכשיר",
+      "description": "הזינו את הקוד המוצג ביישומון או במכשיר שלכם.",
+      "submit": "המשך",
+      "labels": {
+        "code": "קוד"
+      },
+      "required": {
+        "code": "זהו שדה חובה"
+      }
+    },
+    "request": {
+      "title": "{appName} מבקש להתחבר",
+      "description": "ל-{appName} תהיה גישה אל:",
+      "disclaimer": "לחיצה על אישור מאפשרת ל-{appName} ול-Zitadel להשתמש במידע שלכם בהתאם לתנאי השימוש ולמדיניות הפרטיות של כל אחד מהם. ניתן לבטל גישה זו בכל עת.",
+      "submit": "אישור",
+      "deny": "דחייה"
+    },
+    "scope": {
+      "openid": "אימות הזהות שלכם.",
+      "email": "צפייה בכתובת הדוא״ל שלכם.",
+      "profile": "צפייה בכל פרטי הפרופיל שלכם.",
+      "offline_access": "מתן גישה לחשבון שלכם גם כשאינכם מחוברים."
+    }
+  },
+  "error": {
+    "noUserCode": "לא סופק קוד משתמש",
+    "noDeviceRequest": "לא נמצאה בקשת מכשיר.",
+    "unknownContext": "לא ניתן לקבל את הקשר המשתמש. הזינו תחילה שם משתמש או ספקו loginName כפרמטר בכתובת.",
+    "sessionExpired": "תוקף ההפעלה הנוכחית פג. היכנסו שוב.",
+    "failedLoading": "טעינת הנתונים נכשלה. נסו שוב.",
+    "tryagain": "ניסיון נוסף",
+    "couldNotContinueSession": "לא ניתן להמשיך בהפעלה — חסר מידע על המשתמש",
+    "couldNotClearSession": "לא ניתן לסיים את ההפעלה. נסו שוב."
+  }
+}

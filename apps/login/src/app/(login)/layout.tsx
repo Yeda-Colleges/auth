@@ -6,19 +6,19 @@ import { LanguageSwitcher } from "@/components/language-switcher";
 import { Skeleton } from "@/components/skeleton";
 import { ThemeProvider } from "@/components/theme-provider";
 import ThemeSwitch from "@/components/theme-switch";
-import { LANGS, getLanguage } from "@/lib/i18n";
+import { LANGS, getLoginLanguages } from "@/lib/i18n";
 import { getServiceConfig } from "@/lib/service-url";
 import { getAllowedLanguages } from "@/lib/zitadel";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Rubik } from "next/font/google";
 import { headers } from "next/headers";
 import React, { Suspense } from "react";
 
 const rubik = Rubik({
   weight: ["400", "500", "600", "700"],
-  subsets: ["cyrillic", "latin"],
+  subsets: ["cyrillic", "latin", "hebrew"],
 });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -27,23 +27,20 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const locale = await getLocale();
   const _headers = await headers();
   const { serviceConfig } = getServiceConfig(_headers);
 
   let languages = LANGS;
   try {
     const settings = await getAllowedLanguages({ serviceConfig });
-    if (settings.allowedLanguages?.length) {
-      languages = settings.allowedLanguages
-        .filter((code) => LANGS.find((l) => l.code === code))
-        .map((code) => getLanguage(code));
-    }
+    languages = getLoginLanguages(settings.allowedLanguages);
   } catch (e) {
     console.error("Failed to load supported languages", e);
   }
 
   return (
-    <html className={`${rubik.className}`} suppressHydrationWarning>
+    <html lang={locale} dir={locale === "he" ? "rtl" : "ltr"} className={`${rubik.className}`} suppressHydrationWarning>
       <head />
       <body>
         <ThemeProvider>

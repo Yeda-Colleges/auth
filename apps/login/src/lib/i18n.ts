@@ -9,6 +9,10 @@ export const LANGS: Lang[] = [
     code: "en",
   },
   {
+    name: "עברית",
+    code: "he",
+  },
+  {
     name: "Deutsch",
     code: "de",
   },
@@ -64,7 +68,12 @@ export const LANGS: Lang[] = [
     name: "العربية",
     code: "ar",
   },
-];
+].filter((lang) => ["en", "he"].includes(lang.code)); // Yeda Login V2 languages; retain the upstream catalog.
+
+export function getLoginLanguages(allowedLanguages?: string[]): Lang[] {
+  const languages = allowedLanguages?.length ? LANGS.filter((lang) => allowedLanguages.includes(lang.code)) : LANGS;
+  return languages.length ? languages : [LANGS[0]];
+}
 
 export const LANGUAGE_COOKIE_NAME = "NEXT_LOCALE";
 export const LANGUAGE_HEADER_NAME = "accept-language";

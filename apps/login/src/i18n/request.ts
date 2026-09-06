@@ -1,4 +1,4 @@
-import { LANGS, LANGUAGE_COOKIE_NAME, LANGUAGE_HEADER_NAME } from "@/lib/i18n";
+import { getLoginLanguages, LANGS, LANGUAGE_COOKIE_NAME, LANGUAGE_HEADER_NAME } from "@/lib/i18n";
 import { getServiceConfig } from "@/lib/service-url";
 import { getAllowedLanguages, getHostedLoginTranslation } from "@/lib/zitadel";
 import { JsonObject } from "@zitadel/client";
@@ -18,15 +18,16 @@ export default getRequestConfig(async () => {
 
   try {
     const settings = await getAllowedLanguages({ serviceConfig });
-    if (settings.allowedLanguages?.length) {
-      const localLanguageCodes = LANGS.map((l) => l.code);
-      allowedLanguages = settings.allowedLanguages.filter((l) => localLanguageCodes.includes(l));
-    }
-    if (settings.defaultLanguage) {
+    allowedLanguages = getLoginLanguages(settings.allowedLanguages).map((lang) => lang.code);
+    if (settings.defaultLanguage && allowedLanguages.includes(settings.defaultLanguage)) {
       defaultLanguage = settings.defaultLanguage;
     }
   } catch (e) {
     console.warn("Failed to load global settings", e);
+  }
+
+  if (!allowedLanguages.includes(defaultLanguage)) {
+    defaultLanguage = allowedLanguages[0] || fallback;
   }
 
   let locale: string = defaultLanguage;
