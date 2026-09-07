@@ -1,6 +1,6 @@
 import "@/styles/globals.scss";
-import "@/yeda/tokens.css";
 import "@/yeda/theme.css";
+import "@/yeda/tokens.css";
 
 import { BackgroundWrapper } from "@/components/background-wrapper";
 import { LanguageProvider } from "@/components/language-provider";

@@ -284,23 +284,22 @@
   --sidebar-ring: 216 92% 48%;
 
   /* ── Typography ──────────────────────────────────────── */
-  --font-display: 'Rubik', system-ui, sans-serif;
+  --font-display: "Rubik", system-ui, sans-serif;
   --font-size-base: 16px;
-  --font-body: 'Rubik', system-ui, sans-serif;
+  --font-body: "Rubik", system-ui, sans-serif;
 
   /* ── Shadows ─────────────────────────────────────────── */
   /* Cards, carousel items */
-  --shadow-sm: 0px 1px 2px 0px rgba(0, 0, 0, 0.04),
-    0px 4px 4px 0px rgba(0, 0, 0, 0.03), 0px 8px 5px 0px rgba(0, 0, 0, 0.02),
+  --shadow-sm:
+    0px 1px 2px 0px rgba(0, 0, 0, 0.04), 0px 4px 4px 0px rgba(0, 0, 0, 0.03), 0px 8px 5px 0px rgba(0, 0, 0, 0.02),
     0px 14px 6px 0px rgba(0, 0, 0, 0.01);
   /* Input elements */
-  --shadow-md: 0px 2px 4px -2px rgba(0, 0, 0, 0.1),
-    0px 4px 6px -1px rgba(0, 0, 0, 0.06), 0px 0px 6px 0px rgba(0, 0, 0, 0.04);
+  --shadow-md:
+    0px 2px 4px -2px rgba(0, 0, 0, 0.1), 0px 4px 6px -1px rgba(0, 0, 0, 0.06), 0px 0px 6px 0px rgba(0, 0, 0, 0.04);
   /* Modals, dialogs */
-  --shadow-lg: 1px 8px 17px 0px rgba(18, 18, 23, 0.1),
-    4px 30px 30px 0px rgba(18, 18, 23, 0.09),
-    8px 68px 41px 0px rgba(18, 18, 23, 0.05),
-    14px 121px 49px 0px rgba(18, 18, 23, 0.01);
+  --shadow-lg:
+    1px 8px 17px 0px rgba(18, 18, 23, 0.1), 4px 30px 30px 0px rgba(18, 18, 23, 0.09),
+    8px 68px 41px 0px rgba(18, 18, 23, 0.05), 14px 121px 49px 0px rgba(18, 18, 23, 0.01);
   /* Focus rings — derived from semantic tokens so they track theme presets.
    * Phase-1 change: shadow-focus-blue / shadow-focus-btn now use --ring / --border;
    * shadow-focus-error uses --destructive; shadow-focus-success uses --success. */
@@ -315,7 +314,7 @@
 }
 
 .dark,
-[data-theme='dark'] {
+[data-theme="dark"] {
   /* ── Surface ─────────────────────────────────────────── */
   /* Deep neutral with subtle blue undertone (#111318)      */
   --background: 224 16% 9%;
@@ -328,8 +327,7 @@
   /* ── Popover ─────────────────────────────────────────── */
   --popover: var(--background);
   --popover-foreground: 210 20% 95%;
-  --shadow-lg: 0px 12px 28px -6px rgba(0, 0, 0, 0.55),
-    0px 4px 10px -4px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0px 12px 28px -6px rgba(0, 0, 0, 0.55), 0px 4px 10px -4px rgba(0, 0, 0, 0.4);
 
   /* ── Primary ─────────────────────────────────────────── */
   /* Inverted: Blue/700→Blue/300; active derived from --primary */

@@ -39,7 +39,7 @@ export const OTPInput = forwardRef<HTMLInputElement, Props>(function OTPInput(
   useEffect(() => {
     const current = inner.current?.value ?? "";
     if (current !== value) setValue(current);
-  });
+  }, [value]);
 
   const cells = Array.from({ length }, (_, i) => value[i] ?? "");
   const activeIndex = Math.min(focused ? caret : -1, length - 1);
@@ -93,23 +93,28 @@ export const OTPInput = forwardRef<HTMLInputElement, Props>(function OTPInput(
         />
 
         <div className="pointer-events-none flex justify-center" aria-hidden="true">
-          <div className="flex rounded-lg border border-[#d5d8ef] dark:border-[rgba(255,255,255,0.18)] divide-x divide-[#d5d8ef] dark:divide-[rgba(255,255,255,0.18)] overflow-hidden">
+          <div className="flex divide-x divide-[#d5d8ef] overflow-hidden rounded-lg border border-[#d5d8ef] dark:divide-[rgba(255,255,255,0.18)] dark:border-[rgba(255,255,255,0.18)]">
             {cells.map((char, index) => {
               const isActive = index === activeIndex || (activeIndex >= length && index === length - 1);
               return (
                 <div
                   key={index}
                   className={[
-                    "flex h-14 w-12 sm:w-14 items-center justify-center text-[1.25rem] font-semibold transition-colors",
-                    "bg-white dark:bg-[#111318] text-[#1b1b1e] dark:text-[#ffffff]",
+                    "flex h-14 w-12 items-center justify-center text-[1.25rem] font-semibold transition-colors sm:w-14",
+                    "bg-white text-[#1b1b1e] dark:bg-[#111318] dark:text-[#ffffff]",
                     isActive
-                      ? "ring-2 ring-inset ring-[#0a59eb] dark:ring-[#1170ff] bg-[#0a59eb]/5 dark:bg-[#1170ff]/10"
+                      ? "bg-[#0a59eb]/5 ring-2 ring-[#0a59eb] ring-inset dark:bg-[#1170ff]/10 dark:ring-[#1170ff]"
                       : "",
                     error ? "text-[hsl(var(--destructive))]" : "",
                     disabled ? "opacity-50" : "",
                   ].join(" ")}
                 >
-                  {char || (isActive && !char ? <span className="animate-pulse font-normal text-[#0a59eb] dark:text-[#1170ff]">|</span> : "")}
+                  {char ||
+                    (isActive && !char ? (
+                      <span className="animate-pulse font-normal text-[#0a59eb] dark:text-[#1170ff]">|</span>
+                    ) : (
+                      ""
+                    ))}
                 </div>
               );
             })}
@@ -118,7 +123,7 @@ export const OTPInput = forwardRef<HTMLInputElement, Props>(function OTPInput(
       </div>
 
       {error && (
-        <p id={errorId} className="mt-2 text-center text-14px text-[hsl(var(--destructive))]">
+        <p id={errorId} className="text-14px mt-2 text-center text-[hsl(var(--destructive))]">
           {error}
         </p>
       )}

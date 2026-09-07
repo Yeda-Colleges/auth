@@ -12,14 +12,14 @@ body,
 .yeda-auth-page {
   background-color: #ffffff;
   color: #1b1b1e;
-  font-family: var(--font-display, 'Rubik', sans-serif);
+  font-family: var(--font-display, "Rubik", sans-serif);
 }
 
 .dark body,
 html.dark body,
-[data-theme='dark'] body,
+[data-theme="dark"] body,
 .dark .yeda-auth-page,
-[data-theme='dark'] .yeda-auth-page {
+[data-theme="dark"] .yeda-auth-page {
   background-color: #111318;
   color: #ffffff;
 }
@@ -42,9 +42,9 @@ html.dark body,
 .dark .yeda-auth-page > div > div:first-child [class*="dark:bg-background-dark"],
 .dark .yeda-auth-page > div > div:first-child .rounded-lg,
 .dark .yeda-auth-page > div > div:first-child .rounded-3xl,
-[data-theme='dark'] .yeda-auth-page > div > div:first-child [class*="dark:bg-background-dark"],
-[data-theme='dark'] .yeda-auth-page > div > div:first-child .rounded-lg,
-[data-theme='dark'] .yeda-auth-page > div > div:first-child .rounded-3xl {
+[data-theme="dark"] .yeda-auth-page > div > div:first-child [class*="dark:bg-background-dark"],
+[data-theme="dark"] .yeda-auth-page > div > div:first-child .rounded-lg,
+[data-theme="dark"] .yeda-auth-page > div > div:first-child .rounded-3xl {
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-radius: 1.5rem !important;
   box-shadow: none !important;
@@ -55,7 +55,7 @@ html.dark body,
 h1,
 .ztdl-h1 {
   color: #1b1b1e !important;
-  font-family: var(--font-display, 'Rubik', sans-serif);
+  font-family: var(--font-display, "Rubik", sans-serif);
   font-size: 1.75rem !important; /* 28px */
   font-weight: 600 !important;
   line-height: 1.25 !important;
@@ -64,8 +64,8 @@ h1,
 
 .dark h1,
 .dark .ztdl-h1,
-[data-theme='dark'] h1,
-[data-theme='dark'] .ztdl-h1 {
+[data-theme="dark"] h1,
+[data-theme="dark"] .ztdl-h1 {
   color: #ffffff !important;
 }
 
@@ -73,7 +73,7 @@ h1,
 .ztdl-p,
 p {
   color: #606273;
-  font-family: var(--font-display, 'Rubik', sans-serif);
+  font-family: var(--font-display, "Rubik", sans-serif);
   font-size: 1rem;
   line-height: 1.5;
   text-align: center;
@@ -81,8 +81,8 @@ p {
 
 .dark .ztdl-p,
 .dark p,
-[data-theme='dark'] .ztdl-p,
-[data-theme='dark'] p {
+[data-theme="dark"] .ztdl-p,
+[data-theme="dark"] p {
   color: #9fa3b5 !important;
 }
 
@@ -115,7 +115,7 @@ p {
 }
 
 .dark .yeda-auth-page > div > div:first-child .border.rounded-full span,
-[data-theme='dark'] .yeda-auth-page > div > div:first-child .border.rounded-full span {
+[data-theme="dark"] .yeda-auth-page > div > div:first-child .border.rounded-full span {
   color: #ffffff !important;
 }
 
@@ -145,7 +145,7 @@ p {
 }
 
 .dark .yeda-auth-page > div > div:last-child [class*="w-32"] > button,
-[data-theme='dark'] .yeda-auth-page > div > div:last-child [class*="w-32"] > button {
+[data-theme="dark"] .yeda-auth-page > div > div:last-child [class*="w-32"] > button {
   border-color: rgba(255, 255, 255, 0.12) !important;
   background-color: #161821 !important;
   color: #ffffff !important;
@@ -165,7 +165,7 @@ p {
 }
 
 .dark .yeda-auth-page > div > div:last-child div.flex.space-x-1,
-[data-theme='dark'] .yeda-auth-page > div > div:last-child div.flex.space-x-1 {
+[data-theme="dark"] .yeda-auth-page > div > div:last-child div.flex.space-x-1 {
   border-color: rgba(255, 255, 255, 0.12) !important;
   background-color: #161821 !important;
 }
@@ -173,7 +173,7 @@ p {
 /* Theme Switcher inner icon buttons */
 .yeda-auth-page > div > div:last-child div.flex.space-x-1 > button {
   height: 1.875rem !important; /* 30px */
-  width: 1.875rem !important;  /* 30px */
+  width: 1.875rem !important; /* 30px */
   border-radius: 9999px !important;
   border: 1px solid transparent !important;
   box-shadow: none !important;
@@ -209,11 +209,9 @@ p {
 /* Selected icon button highlight in dark mode */
 .dark .yeda-auth-page > div > div:last-child div.flex.space-x-1 > button[class*="bg-white"],
 .dark .yeda-auth-page > div > div:last-child div.flex.space-x-1 > button[class*="dark:bg-gray-800"],
-[data-theme='dark'] .yeda-auth-page > div > div:last-child div.flex.space-x-1 > button[class*="bg-white"],
-[data-theme='dark'] .yeda-auth-page > div > div:last-child div.flex.space-x-1 > button[class*="dark:bg-gray-800"] {
+[data-theme="dark"] .yeda-auth-page > div > div:last-child div.flex.space-x-1 > button[class*="bg-white"],
+[data-theme="dark"] .yeda-auth-page > div > div:last-child div.flex.space-x-1 > button[class*="dark:bg-gray-800"] {
   background-color: #262b37 !important;
   border-color: rgba(255, 255, 255, 0.15) !important;
   color: #1170ff !important;
 }
-
-
