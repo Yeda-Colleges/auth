@@ -3,6 +3,7 @@
 import { completeFlowOrGetUrl } from "@/lib/client";
 import { handleServerActionResponse } from "@/lib/client-utils";
 import { updateOrCreateSession } from "@/lib/server/session";
+import { OTPInput } from "@/yeda/otp-input";
 import { create } from "@zitadel/client";
 import { RequestChallengesSchema } from "@zitadel/proto/zitadel/session/v2/challenge_pb";
 import { ChecksSchema } from "@zitadel/proto/zitadel/session/v2/session_service_pb";
@@ -11,11 +12,9 @@ import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Alert, AlertType } from "./alert";
+import { Alert } from "./alert";
 import { AutoSubmitForm } from "./auto-submit-form";
-import { BackButton } from "./back-button";
 import { Button, ButtonVariants } from "./button";
-import { TextInput } from "./input";
 import { Spinner } from "./spinner";
 import { Translated } from "./translated";
 
@@ -213,62 +212,68 @@ export function LoginOTP({ host, loginName, sessionId, requestId, organization, 
     <>
       {samlData && <AutoSubmitForm url={samlData.url} fields={samlData.fields} />}
       <form className="w-full">
-        {["email", "sms"].includes(method) && (
-          <Alert type={AlertType.INFO}>
-            <div className="flex flex-row">
-              <span className="mr-auto flex-1 text-left">
-                <Translated i18nKey="verify.noCodeReceived" namespace="otp" />
-              </span>
-              <button
-                aria-label={t("verify.resendCode")}
-                disabled={loading}
-                type="button"
-                className="text-primary-light-500 hover:text-primary-light-400 dark:text-primary-dark-500 hover:dark:text-primary-dark-400 ml-4 cursor-pointer disabled:cursor-default disabled:text-gray-400 dark:disabled:text-gray-700"
-                onClick={async () => {
-                  setLoading(true);
-                  const response = await updateSessionForOTPChallenge();
-                  if (response?.error) {
-                    setError(response.error);
-                  }
-                  setLoading(false);
-                }}
-                data-testid="resend-button"
-              >
-                <Translated i18nKey="verify.resendCode" namespace="otp" />
-              </button>
-            </div>
-          </Alert>
-        )}
-        <div className="mt-4">
-          <TextInput
-            type="text"
+        <div>
+          <OTPInput
             autoFocus
+            length={["email", "sms"].includes(method) ? 8 : 6}
             {...register("code", { required: t("verify.required.code") })}
             label={t("verify.labels.code")}
-            autoComplete="one-time-code"
             data-testid="code-text-input"
           />
         </div>
 
+        {["email", "sms"].includes(method) && (
+          <div className="mt-4 flex flex-row items-center justify-center text-center text-sm text-[#606273] dark:text-[#9fa3b5]">
+            <span>
+              <Translated i18nKey="verify.noCodeReceived" namespace="otp" />{" "}
+            </span>
+            <button
+              aria-label={t("verify.resendCode")}
+              disabled={loading}
+              type="button"
+              className="ml-1 cursor-pointer font-medium text-[#0a59eb] transition-colors hover:text-[#0f48be] disabled:cursor-default disabled:opacity-50 dark:text-[#288fff] hover:dark:text-[#819af8]"
+              onClick={async () => {
+                setLoading(true);
+                const response = await updateSessionForOTPChallenge();
+                if (response?.error) {
+                  setError(response.error);
+                }
+                setLoading(false);
+              }}
+              data-testid="resend-button"
+            >
+              <Translated i18nKey="verify.resendCode" namespace="otp" />
+            </button>
+          </div>
+        )}
+
         {error && (
-          <div className="py-4" data-testid="error">
+          <div className="mt-4" data-testid="error">
             <Alert>{error}</Alert>
           </div>
         )}
 
-        <div className="mt-8 flex w-full flex-row items-center">
-          <BackButton data-testid="back-button" />
-          <span className="flex-grow"></span>
+        <div className="mt-8 flex w-full flex-col items-center space-y-3">
           <Button
             type="submit"
-            className="self-end"
+            className="!h-14 w-full justify-center !rounded-xl !bg-[#0a59eb] !text-base !font-medium text-white shadow-none hover:!bg-[#0f48be] dark:!bg-[#1170ff] dark:hover:!bg-[#0a59eb]"
             variant={ButtonVariants.Primary}
             disabled={loading || !formState.isValid}
             onClick={handleSubmit(setCodeAndContinue)}
             data-testid="submit-button"
           >
-            {loading && <Spinner className="mr-2 h-5 w-5" />} <Translated i18nKey="verify.submit" namespace="otp" />
+            {loading && <Spinner className="mr-2 h-5 w-5" />}
+            <Translated i18nKey="verify.submit" namespace="otp" />
           </Button>
+
+          <button
+            type="button"
+            onClick={() => router.back()}
+            className="cursor-pointer py-1 text-sm font-medium text-[#0a59eb] transition-colors hover:text-[#0f48be] dark:text-[#288fff] hover:dark:text-[#819af8]"
+            data-testid="back-button"
+          >
+            <Translated i18nKey="back" namespace="common" />
+          </button>
         </div>
       </form>
     </>

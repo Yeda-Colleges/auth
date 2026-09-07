@@ -26,7 +26,9 @@ export const OTPInput = forwardRef<HTMLInputElement, Props>(function OTPInput(
   { length = 6, label, error, disabled, className, onChange, onBlur, name, "data-testid": testId, ...rest },
   ref,
 ) {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(() =>
+    rest.defaultValue != null ? String(rest.defaultValue) : rest.value != null ? String(rest.value) : "",
+  );
   const [focused, setFocused] = useState(false);
   const [caret, setCaret] = useState(0);
   const inner = useRef<HTMLInputElement | null>(null);
@@ -100,7 +102,8 @@ export const OTPInput = forwardRef<HTMLInputElement, Props>(function OTPInput(
                 <div
                   key={index}
                   className={[
-                    "flex h-14 w-12 items-center justify-center text-[1.25rem] font-semibold transition-colors sm:w-14",
+                    "flex items-center justify-center font-semibold transition-colors",
+                    length > 6 ? "h-12 w-8 text-base sm:h-14 sm:w-11 sm:text-[1.25rem]" : "h-14 w-12 text-[1.25rem] sm:w-14",
                     "bg-white text-[#1b1b1e] dark:bg-[#111318] dark:text-[#ffffff]",
                     isActive
                       ? "bg-[#0a59eb]/5 ring-2 ring-[#0a59eb] ring-inset dark:bg-[#1170ff]/10 dark:ring-[#1170ff]"
