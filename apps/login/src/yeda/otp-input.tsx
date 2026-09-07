@@ -47,7 +47,7 @@ export const OTPInput = forwardRef<HTMLInputElement, Props>(function OTPInput(
   return (
     <div className={className}>
       {label && (
-        <label htmlFor={id} className="text-foreground/70 mb-2 block text-14px">
+        <label htmlFor={id} className="sr-only">
           {label}
         </label>
       )}
@@ -92,24 +92,24 @@ export const OTPInput = forwardRef<HTMLInputElement, Props>(function OTPInput(
           }}
         />
 
-        <div className="pointer-events-none flex gap-2" aria-hidden="true">
+        <div className="pointer-events-none flex justify-center gap-2" aria-hidden="true">
           {cells.map((char, index) => {
             const isActive = index === activeIndex || (activeIndex >= length && index === length - 1);
             return (
               <div
                 key={index}
                 className={[
-                  "flex h-14 flex-1 items-center justify-center rounded-[var(--radius-control)] border text-[1.25rem] font-medium transition-colors",
-                  "bg-[hsl(var(--background))] text-[hsl(var(--foreground))]",
+                  "flex h-14 flex-1 items-center justify-center rounded-lg border text-[1.25rem] font-semibold transition-colors",
+                  "bg-white dark:bg-[#111318] text-[#1b1b1e] dark:text-[#ffffff]",
                   error
                     ? "border-[hsl(var(--destructive))]"
                     : isActive
-                      ? "border-[hsl(var(--ring))] ring-1 ring-[hsl(var(--ring))]"
-                      : "border-[hsl(var(--input))]",
+                      ? "border-[#0a59eb] dark:border-[#1170ff] ring-1 ring-[#0a59eb] dark:ring-[#1170ff]"
+                      : "border-[#d5d8ef] dark:border-[rgba(255,255,255,0.18)]",
                   disabled ? "opacity-50" : "",
                 ].join(" ")}
               >
-                {char || (isActive && !char ? <span className="animate-pulse font-normal opacity-40">|</span> : "")}
+                {char || (isActive && !char ? <span className="animate-pulse font-normal opacity-50 text-[#0a59eb] dark:text-[#1170ff]">|</span> : "")}
               </div>
             );
           })}
@@ -117,7 +117,7 @@ export const OTPInput = forwardRef<HTMLInputElement, Props>(function OTPInput(
       </div>
 
       {error && (
-        <p id={errorId} className="mt-2 text-14px text-[hsl(var(--destructive))]">
+        <p id={errorId} className="mt-2 text-center text-14px text-[hsl(var(--destructive))]">
           {error}
         </p>
       )}

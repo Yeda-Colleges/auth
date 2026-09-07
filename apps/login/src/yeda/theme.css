@@ -7,20 +7,106 @@
  * conflict on a release merge.
  */
 
-/*
- * Upstream gives `h1` size and alignment but never a color, while `.ztdl-p`
- * right below it does set a dark-theme color. Headings therefore fall back to
- * the UA black and are unreadable on the dark card. Reported upstream; remove
- * this rule once a release carries the fix.
- */
-h1,
-.ztdl-h1 {
-  color: hsl(var(--foreground));
+/* ── Page Background: clean and flat as in Figma ───────────────── */
+body,
+.yeda-auth-page {
+  background-color: #ffffff;
+  color: #1b1b1e;
+  font-family: var(--font-display, 'Rubik', sans-serif);
 }
 
-/*
- * ZITADEL writes its own --theme-* colors as inline styles on <html> from the
- * instance branding, so those always win over CSS. Anything below therefore
- * styles shape, spacing and typography only, and leaves color to branding and
- * to the Yeda tokens.
- */
+.dark body,
+html.dark body,
+[data-theme='dark'] body,
+.dark .yeda-auth-page,
+[data-theme='dark'] .yeda-auth-page {
+  background-color: #111318;
+  color: #ffffff;
+}
+
+/* ── Card Styling: 1px border, rounded-[24px], NO box-shadow ──── */
+.yeda-auth-page [class*="max-w-[440px]"] {
+  max-width: 520px;
+}
+
+.yeda-auth-page [class*="bg-background-light"],
+.yeda-auth-page .rounded-lg,
+.yeda-auth-page .rounded-3xl {
+  border: 1px solid var(--border-scale-100, #e8eaf5) !important;
+  border-radius: 1.5rem !important; /* 24px */
+  box-shadow: none !important;
+  background-color: #ffffff !important;
+}
+
+.dark .yeda-auth-page [class*="dark:bg-background-dark"],
+.dark .yeda-auth-page .rounded-lg,
+.dark .yeda-auth-page .rounded-3xl,
+[data-theme='dark'] .yeda-auth-page [class*="dark:bg-background-dark"],
+[data-theme='dark'] .yeda-auth-page .rounded-lg,
+[data-theme='dark'] .yeda-auth-page .rounded-3xl {
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 1.5rem !important;
+  box-shadow: none !important;
+  background-color: #161821 !important;
+}
+
+/* ── Typography & Headings ─────────────────────────────────────── */
+h1,
+.ztdl-h1 {
+  color: #1b1b1e !important;
+  font-family: var(--font-display, 'Rubik', sans-serif);
+  font-size: 1.75rem !important; /* 28px */
+  font-weight: 600 !important;
+  line-height: 1.25 !important;
+  text-align: center;
+}
+
+.dark h1,
+.dark .ztdl-h1,
+[data-theme='dark'] h1,
+[data-theme='dark'] .ztdl-h1 {
+  color: #ffffff !important;
+}
+
+/* ── Subtitle / Paragraphs ─────────────────────────────────────── */
+.ztdl-p,
+p {
+  color: #606273;
+  font-family: var(--font-display, 'Rubik', sans-serif);
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.dark .ztdl-p,
+.dark p,
+[data-theme='dark'] .ztdl-p,
+[data-theme='dark'] p {
+  color: #9fa3b5 !important;
+}
+
+/* ── User Avatar Pill in Light and Dark Mode ───────────────────── */
+.yeda-auth-page .border.rounded-full {
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0.25rem;
+  padding-right: 0.75rem;
+  border-color: #e8eaf5 !important;
+  background-color: transparent !important;
+}
+
+.dark .yeda-auth-page .border.rounded-full,
+[data-theme='dark'] .yeda-auth-page .border.rounded-full {
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.yeda-auth-page .border.rounded-full span {
+  color: #1b1b1e;
+}
+
+.dark .yeda-auth-page .border.rounded-full span,
+[data-theme='dark'] .yeda-auth-page .border.rounded-full span {
+  color: #ffffff !important;
+}
+

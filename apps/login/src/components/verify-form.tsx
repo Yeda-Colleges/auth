@@ -132,26 +132,7 @@ export function VerifyForm({ userId, loginName, organization, requestId, code, i
         </div>
       )}
       <form className="w-full">
-        <Alert type={AlertType.INFO}>
-          <div className="flex flex-row">
-            <span className="mr-auto flex-1 text-left">
-              <Translated i18nKey="verify.noCodeReceived" namespace="verify" />
-            </span>
-            <button
-              aria-label="Resend Code"
-              disabled={loading}
-              type="button"
-              className="text-primary-light-500 hover:text-primary-light-400 dark:text-primary-dark-500 hover:dark:text-primary-dark-400 ml-4 cursor-pointer disabled:cursor-default disabled:text-gray-400 dark:disabled:text-gray-700"
-              onClick={() => {
-                resendCode();
-              }}
-              data-testid="resend-button"
-            >
-              <Translated i18nKey="verify.resendCode" namespace="verify" />
-            </button>
-          </div>
-        </Alert>
-        <div className="mt-4">
+        <div>
           <OTPInput
             autoFocus
             {...register("code", { required: t("verify.required.code") })}
@@ -160,18 +141,34 @@ export function VerifyForm({ userId, loginName, organization, requestId, code, i
           />
         </div>
 
+        <div className="mt-4 flex flex-row items-center justify-center text-center text-sm text-[#606273] dark:text-[#9fa3b5]">
+          <span>
+            <Translated i18nKey="verify.noCodeReceived" namespace="verify" />{" "}
+          </span>
+          <button
+            aria-label="Resend Code"
+            disabled={loading}
+            type="button"
+            className="ml-1 font-medium text-[#0a59eb] hover:text-[#0f48be] dark:text-[#288fff] hover:dark:text-[#819af8] cursor-pointer disabled:cursor-default disabled:opacity-50 transition-colors"
+            onClick={() => {
+              resendCode();
+            }}
+            data-testid="resend-button"
+          >
+            <Translated i18nKey="verify.resendCode" namespace="verify" />
+          </button>
+        </div>
+
         {error && (
-          <div className="py-4" data-testid="error">
+          <div className="mt-4" data-testid="error">
             <Alert>{error}</Alert>
           </div>
         )}
 
-        <div className="mt-8 flex w-full flex-row items-center">
-          <BackButton />
-          <span className="flex-grow"></span>
+        <div className="mt-8 flex w-full flex-col items-center space-y-3">
           <Button
             type="submit"
-            className="self-end"
+            className="w-full !h-14 !text-base !font-medium !rounded-xl justify-center shadow-none !bg-[#0a59eb] hover:!bg-[#0f48be] dark:!bg-[#1170ff] dark:hover:!bg-[#0a59eb] text-white"
             variant={ButtonVariants.Primary}
             disabled={loading || !formState.isValid}
             onClick={handleSubmit(fcn)}
@@ -180,6 +177,15 @@ export function VerifyForm({ userId, loginName, organization, requestId, code, i
             {loading && <Spinner className="mr-2 h-5 w-5" />}
             <Translated i18nKey="verify.submit" namespace="verify" />
           </Button>
+
+          <button
+            type="button"
+            onClick={() => router.back()}
+            className="text-sm font-medium text-[#0a59eb] hover:text-[#0f48be] dark:text-[#288fff] hover:dark:text-[#819af8] transition-colors py-1 cursor-pointer"
+            data-testid="back-button"
+          >
+            <Translated i18nKey="back" namespace="common" />
+          </button>
         </div>
       </form>
     </>
