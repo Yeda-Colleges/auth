@@ -1,6 +1,6 @@
 "use client";
 
-import { YedaLogo } from "@/components/yeda-logo";
+import { Logo } from "@/components/logo";
 import { useResponsiveLayout } from "@/lib/theme-hooks";
 import { BrandingSettings } from "@zitadel/proto/zitadel/settings/v2/branding_settings_pb";
 import React, { Children, ReactNode } from "react";
@@ -56,13 +56,20 @@ export function DynamicTheme({
                     <div className="from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 flex w-1/2 flex-col justify-center bg-gradient-to-br p-4 lg:p-8">
                       <div className="mx-auto max-w-[440px] space-y-8">
                         {/* Logo and branding */}
-                        <YedaLogo />
+                        {branding && (
+                          <Logo
+                            lightSrc={branding.lightTheme?.logoUrl}
+                            darkSrc={branding.darkTheme?.logoUrl}
+                            height={150}
+                            width={150}
+                          />
+                        )}
 
                         {/* First child content (title, description) - only if we have left/right structure */}
                         {hasLeftRightStructure && (
-                          <div className="flex flex-col items-start space-y-4 text-start">
+                          <div className="flex flex-col items-start space-y-4 text-left">
                             {/* Apply larger styling to the content */}
-                            <div className="space-y-6 [&_h1]:text-start [&_h1]:text-4xl [&_h1]:leading-tight [&_h1]:text-gray-900 [&_h1]:lg:text-4xl [&_h1]:dark:text-white [&_p]:text-start [&_p]:leading-relaxed [&_p]:text-gray-700 [&_p]:dark:text-gray-300">
+                            <div className="space-y-6 [&_h1]:text-left [&_h1]:text-4xl [&_h1]:leading-tight [&_h1]:text-gray-900 [&_h1]:lg:text-4xl [&_h1]:dark:text-white [&_p]:text-left [&_p]:leading-relaxed [&_p]:text-gray-700 [&_p]:dark:text-gray-300">
                               {leftContent}
                             </div>
                           </div>
@@ -89,11 +96,18 @@ export function DynamicTheme({
             const hasMultipleChildren = childArray.length > 1;
 
             return (
-              <div className="yeda-auth-shell relative mx-auto w-full max-w-[440px] px-4 py-4">
-                <Card className="yeda-auth-card">
+              <div className="relative mx-auto w-full max-w-[440px] px-4 py-4">
+                <Card>
                   <div className="mx-auto flex flex-col items-center space-y-8">
                     <div className="relative flex flex-row items-center justify-center">
-                      <YedaLogo />
+                      {branding && (
+                        <Logo
+                          lightSrc={branding.lightTheme?.logoUrl}
+                          darkSrc={branding.darkTheme?.logoUrl}
+                          height={150}
+                          width={150}
+                        />
+                      )}
                     </div>
 
                     {hasMultipleChildren ? (

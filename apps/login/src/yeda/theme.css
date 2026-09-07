@@ -1,0 +1,26 @@
+/*
+ * Yeda theme layer for the ZITADEL Login UI.
+ *
+ * Loaded after ./tokens.css and after ZITADEL's globals.scss, so this file is
+ * the only place that adapts upstream markup to the Yeda design. Keeping it a
+ * separate file means no upstream stylesheet is edited and nothing here can
+ * conflict on a release merge.
+ */
+
+/*
+ * Upstream gives `h1` size and alignment but never a color, while `.ztdl-p`
+ * right below it does set a dark-theme color. Headings therefore fall back to
+ * the UA black and are unreadable on the dark card. Reported upstream; remove
+ * this rule once a release carries the fix.
+ */
+h1,
+.ztdl-h1 {
+  color: hsl(var(--foreground));
+}
+
+/*
+ * ZITADEL writes its own --theme-* colors as inline styles on <html> from the
+ * instance branding, so those always win over CSS. Anything below therefore
+ * styles shape, spacing and typography only, and leaves color to branding and
+ * to the Yeda tokens.
+ */

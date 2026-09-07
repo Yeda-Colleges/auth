@@ -17,17 +17,17 @@ export type ColorMap = {
   [_key in MapName]: Color[];
 };
 
-export const DARK_PRIMARY = "#819af8";
-export const PRIMARY = "#0a59eb";
+export const DARK_PRIMARY = "#eeeeee";
+export const PRIMARY = "#5469d4";
 
-export const DARK_WARN = "#ff6464";
-export const WARN = "#ff2a2a";
+export const DARK_WARN = "#ff3b5b";
+export const WARN = "#cd3d56";
 
-export const DARK_BACKGROUND = "#1b1b1e";
-export const BACKGROUND = "#f5f7f8";
+export const DARK_BACKGROUND = "#252526";
+export const BACKGROUND = "#fafafa";
 
 export const DARK_TEXT = "#ffffff";
-export const TEXT = "#2f2f37";
+export const TEXT = "#000000";
 
 export type LabelPolicyColors = {
   backgroundColor: string;
@@ -55,19 +55,19 @@ type BrandingColors = {
   };
 };
 
-export function setTheme(document: any, _policy?: BrandingSettings) {
+export function setTheme(document: any, policy?: BrandingSettings) {
   const lP: BrandingColors = {
     lightTheme: {
-      backgroundColor: BACKGROUND,
-      fontColor: TEXT,
-      primaryColor: PRIMARY,
-      warnColor: WARN,
+      backgroundColor: policy?.lightTheme?.backgroundColor || BACKGROUND,
+      fontColor: policy?.lightTheme?.fontColor || TEXT,
+      primaryColor: policy?.lightTheme?.primaryColor || PRIMARY,
+      warnColor: policy?.lightTheme?.warnColor || WARN,
     },
     darkTheme: {
-      backgroundColor: DARK_BACKGROUND,
-      fontColor: DARK_TEXT,
-      primaryColor: DARK_PRIMARY,
-      warnColor: DARK_WARN,
+      backgroundColor: policy?.darkTheme?.backgroundColor || DARK_BACKGROUND,
+      fontColor: policy?.darkTheme?.fontColor || DARK_TEXT,
+      primaryColor: policy?.darkTheme?.primaryColor || DARK_PRIMARY,
+      warnColor: policy?.darkTheme?.warnColor || DARK_WARN,
     },
   };
 

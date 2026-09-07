@@ -71,7 +71,6 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           required={required}
           disabled={disabled}
           placeholder={placeholder}
-          dir={props.dir ?? "auto"}
           autoComplete={props.autoComplete ?? "off"}
           onChange={(e) => onChange && onChange(e)}
           onBlur={(e) => onBlur && onBlur(e)}

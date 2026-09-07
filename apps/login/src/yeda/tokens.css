@@ -1,0 +1,468 @@
+/*
+ * Yeda design tokens for the ZITADEL Login UI.
+ *
+ * Ported verbatim from Yeda1Monorepo libs/ui/kit/src/core/tokens/base.css so the
+ * login renders from the same source of truth as the rest of the product.
+ * Light values live on :root, dark overrides on .dark — ZITADEL's ThemeProvider
+ * toggles that class, so both themes follow the viewer's choice automatically.
+ *
+ * Do not hand-edit: re-port from the monorepo when the design system changes.
+ */
+
+:root {
+  /* ── Raw Color Scales ──────────────────────────────────
+   * Hex values ported from Figma "Colors" page.
+   * Referenced only through Tailwind semantic utilities.
+   * ───────────────────────────────────────────────────── */
+
+  /* ── Grey Scale ──────────────────────────────────────── */
+  --grey-50: #f5f7f8;
+  --grey-100: #edeff2;
+  --grey-200: #dee2e7;
+  --grey-300: #caced7;
+  --grey-400: #b3b8c6;
+  --grey-500: #9fa3b5;
+  --grey-600: #8b8ea4;
+  --grey-700: #75778d;
+  --grey-800: #606273;
+  --grey-900: #51535e;
+  --grey-950: #2f2f37;
+
+  /* ── Border Scale ────────────────────────────────────── */
+  --border-scale-50: #f3f4fa;
+  --border-scale-100: #e8eaf5;
+  --border-scale-200: #d5d8ef;
+  --border-scale-300: #bcc0e5;
+  --border-scale-400: #a0a2d9;
+  --border-scale-500: #8d89cb;
+  --border-scale-600: #7a70bb;
+  --border-scale-700: #695fa3;
+  --border-scale-800: #564e85;
+  --border-scale-900: #48446b;
+  --border-scale-950: #2b283e;
+
+  /* ── Accent Blue Scale ───────────────────────────────── */
+  --blue-50: #f7f8fc;
+  --blue-100: #e5eeff;
+  --blue-200: #c7d8fe;
+  --blue-300: #a5befc;
+  --blue-400: #819af8;
+  --blue-500: #288fff;
+  --blue-600: #1170ff;
+  --blue-700: #0a59eb;
+  --blue-800: #0f48be;
+  --blue-900: #134195;
+  --blue-950: #2e3581;
+
+  /* ── Success Scale ───────────────────────────────────── */
+  --success-scale-50: #ebffe5;
+  --success-scale-100: #d7ffe1;
+  --success-scale-200: #b2ffc4;
+  --success-scale-300: #76ff98;
+  --success-scale-400: #33f564;
+  --success-scale-500: #09de3f;
+  --success-scale-600: #00c332;
+  --success-scale-700: #01a22a;
+  --success-scale-800: #0a7125;
+  --success-scale-900: #0a5d22;
+  --success-scale-950: #00340f;
+
+  /* ── Warning Scale ───────────────────────────────────── */
+  --warning-scale-50: #fff9e1;
+  --warning-scale-100: #fffed3;
+  --warning-scale-200: #ffeba5;
+  --warning-scale-300: #ffda6d;
+  --warning-scale-400: #ffbe32;
+  --warning-scale-500: #ffa70a;
+  --warning-scale-600: #f08700;
+  --warning-scale-700: #cc6902;
+  --warning-scale-800: #a1510b;
+  --warning-scale-900: #82440c;
+  --warning-scale-950: #462104;
+
+  /* ── Error Scale ─────────────────────────────────────── */
+  --error-scale-50: #fff1f1;
+  --error-scale-100: #ffe0e0;
+  --error-scale-200: #ffc5c5;
+  --error-scale-300: #ff9d9d;
+  --error-scale-400: #ff6464;
+  --error-scale-500: #ff2a2a;
+  --error-scale-600: #ed1515;
+  --error-scale-700: #c80d0d;
+  --error-scale-800: #a50f0f;
+  --error-scale-900: #881414;
+  --error-scale-950: #4b0404;
+
+  /* ── Standalone Colors ───────────────────────────────── */
+  --color-black: #1b1b1e;
+  --color-white: #ffffff;
+  --color-dark-grey: #8b8ea4;
+
+  /* ── Surface ─────────────────────────────────────────── */
+  /* --background  → white (#ffffff)                        */
+  /* --foreground  → Grey/950 (#2F2F37)                     */
+  --background: 0 0% 100%;
+  --foreground: 240 5.263% 11.176%;
+
+  /* ── Card ────────────────────────────────────────────── */
+  --card: 0 0% 100%;
+  --card-foreground: var(--foreground);
+
+  /* ── Popover ─────────────────────────────────────────── */
+  --popover: 0 0% 100%;
+  --popover-foreground: var(--foreground);
+
+  /* ── Primary ─────────────────────────────────────────── */
+  /* --primary         → Blue/700 (#0A59EB)                 */
+  /* --primary-hover  → Blue/800 (#0F48BE)                  */
+  /* --primary-active → Blue/900 (#134195)                  */
+  /* --primary-foreground → white                           */
+  --primary: 218.933 91.837% 48.039%;
+  --primary-hover: 220.457 85.366% 40.196%;
+  --primary-active: 218.769 77.381% 32.941%;
+  --primary-foreground: 0 0% 100%;
+  --focus-primary: 227.395 89.474% 73.922%;
+  --shadow-focus-chip: 0 0 0 3px #c7d8fe;
+  --shadow-focus-switch: 0 0 0 3px #c7d8fe;
+  --shadow-focus-switch-unchecked: 0 0 0 3px #dee2e7;
+
+  /* Link interaction states — exact approved light-theme values. */
+  --link: #0a59eb;
+  --link-hover: #0f48be;
+  --link-active: var(--blue-950);
+  --link-focus-background: #edeff2;
+  --link-focus-border: #caced7;
+  --link-focus-shadow: #dee2e7;
+  --link-secondary: #1b1b1e;
+  --link-secondary-hover: #0f48be;
+  --link-secondary-active: var(--link-active);
+  --icon-foreground: #1b1b1e;
+  --input-icon: #8b8ea4;
+
+  /* ── Secondary ───────────────────────────────────────── */
+  /* --secondary           → Grey/50  (#F5F7F8)             */
+  /* --secondary-foreground → Border/700 (#695FA3)          */
+  --secondary: 200 18% 97%;
+  --secondary-foreground: 228 14% 32%;
+
+  /* ── Muted ───────────────────────────────────────────── */
+  /* --muted           → Grey/50  (#F5F7F8)                 */
+  /* --muted-foreground → Grey/500 (#9FA3B5)                */
+  --muted: 200 18% 97%;
+  --muted-foreground: 234 11% 50%;
+  --toast-description: #606273;
+  --toast-close: #2f2f37;
+  --slider-track: 216 16.129% 93.922%;
+  --toggle-active: 216 16.129% 93.922%;
+  --button-outline-disabled: #dee2e7;
+  --button-outline-disabled-foreground: #8b8ea4;
+  --button-outline-border: #caced7;
+  --button-outline-hover: #f5f7f8;
+  --button-outline-active: #edeff2;
+  --tabs-contained-hover: hsl(var(--card) / 0.48);
+  --search-recent-hover: var(--button-outline-active);
+  --checkbox-disabled: #edeff2;
+  --checkbox-disabled-foreground: #8b8ea4;
+  --slider-disabled-progress: 224.211 14.286% 73.922%;
+  --slider-disabled-thumb: 200 17.647% 96.667%;
+  --slider-disabled-thumb-border: 224.211 14.286% 73.922%;
+  --skeleton-start: 200 17.647% 96.667%;
+  --skeleton-end: 216 16.129% 93.922%;
+
+  /* ── Accent ──────────────────────────────────────────── */
+  /* --accent           → Border/50 (#F3F4FA)               */
+  /* --accent-foreground → Blue/700  (#0A59EB)              */
+  --accent: 228 33% 97%;
+  --accent-foreground: 217 85% 40%;
+  --chip-accent-foreground: var(--accent-foreground);
+  --dropdown-hover: 228 33% 97%;
+  --calendar-range-marker: var(--border);
+  --chip-active: 228 45.455% 97.843%;
+  --chip-active-border: 216 93% 89%;
+  --rich-radio-border: 233.077 44.828% 88.627%;
+
+  /* ── Destructive ─────────────────────────────────────── */
+  /* --destructive           → Error/600                    */
+  /* --destructive-foreground → white                       */
+  --destructive: 0 100% 58.235%;
+  --destructive-hover: 0 85.714% 48%;
+  --destructive-active: 0 87.879% 41.765%;
+  --destructive-foreground: 0 0% 100%;
+
+  /* ── Success ─────────────────────────────────────────── */
+  /* --success           → Success/600 (#00C332)            */
+  /* --success-foreground → white                           */
+  --success: 135.385 100% 38.235%;
+  --success-hover: 135.06 98.824% 31.961%;
+  --success-active: 139.677 83.784% 24.118%;
+  --form-success: var(--success);
+  --success-foreground: 0 0% 100%;
+  --badge-success: #ebffe5;
+  --badge-success-foreground: #01a22a;
+  --badge-error: #fff1f1;
+  --badge-error-foreground: #ff2a2a;
+
+  /* ── Warning ─────────────────────────────────────────── */
+  /* --warning           → Warning/500 (#FFA70A)            */
+  /* --warning-foreground → Warning/900 (#82440C)           */
+  --warning: 38.449 100% 51.961%;
+  --warning-hover: 33.75 100% 47.059%;
+  --warning-active: 30.75 98.701% 40.196%;
+  --warning-foreground: 33 100% 24%;
+
+  /* ── Node Wait (violet — workflow wait/delay accent) ── */
+  --node-wait: 263 70% 60%;
+
+  /* ── Status dots ─────────────────────────────────────── */
+  --status-active: 133 100% 38%; /* reuse success */
+  --status-pending: 39 100% 52%; /* reuse warning */
+  --status-inactive: 234 11% 70%; /* neutral grey */
+
+  /* ── Automation trigger types (paired bg/fg) ────────── */
+  --trigger-event: 263 70% 60%; /* violet */
+  --trigger-event-foreground: 263 70% 40%;
+  --trigger-schedule: 199 89% 48%; /* sky */
+  --trigger-schedule-foreground: 199 89% 35%;
+  --trigger-form: 39 100% 52%; /* amber */
+  --trigger-form-foreground: 33 100% 24%;
+  --trigger-webhook: 173 80% 40%; /* teal */
+  --trigger-webhook-foreground: 173 80% 28%;
+  --trigger-offset: 346 77% 50%; /* rose */
+  --trigger-offset-foreground: 346 77% 38%;
+
+  /* ── Border / Input / Ring ───────────────────────────── */
+  /* --border       → Border/100 (#E8EAF5)                  */
+  /* --input        → Border/200 (#D5D8EF)                  */
+  /* --input-hover  → Border/300 (#BCC0E5) — hover state    */
+  /* --ring         → Blue/700   (#0A59EB)                  */
+  --border: 230.769 39.394% 93.529%;
+  --input: 233.077 44.828% 88.627%;
+  --input-hover: 234.146 44.086% 81.765%;
+  --ring: var(--primary);
+  --overlay: 0 0% 0%;
+
+  /* ── Radius ──────────────────────────────────────────── */
+  --radius: 0.5rem;
+  --radius-control: 0.5rem;
+  --radius-surface: 0.75rem;
+  --border-width: 1px;
+  --toast-inset: 1.5rem;
+  --time-picker-open-extra-height: 4rem;
+
+  /* Empty-state card geometry — mirrors the Figma large/small variants. */
+  --empty-state-card-padding: 2rem;
+  --empty-state-large-width: 36.5rem;
+  --empty-state-large-height: 39.5rem;
+  --empty-state-large-radius: 1.25rem;
+  --empty-state-large-gap: 2rem;
+  --empty-state-large-icon: 5rem;
+  --empty-state-large-copy-width: 25rem;
+  --empty-state-large-title-size: 1.5rem;
+  --empty-state-large-action-height: 3rem;
+  --empty-state-large-action-min-width: 6.25rem;
+  --empty-state-large-action-padding-inline: 1.5rem;
+  --empty-state-small-width: 21.4375rem;
+  --empty-state-small-height: 29.6875rem;
+  --empty-state-small-radius: 1rem;
+  --empty-state-small-gap: 1.5rem;
+  --empty-state-small-icon: 4rem;
+  --empty-state-small-copy-width: 17.4375rem;
+  --empty-state-small-title-size: 1.25rem;
+  --empty-state-small-action-height: 2.75rem;
+  --empty-state-small-action-min-width: 5rem;
+  --empty-state-small-action-padding-inline: 1rem;
+
+  /* ── Sidebar ─────────────────────────────────────────── */
+  --sidebar-background: 0 0% 100%;
+  --sidebar-foreground: 240 4% 11%;
+  --sidebar-primary: 216 92% 48%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --avatar-background: var(--primary) / 0.08;
+  --sidebar-accent: var(--avatar-background);
+  --sidebar-accent-foreground: var(--primary);
+  --sidebar-border: 234 38% 93%;
+  --sidebar-ring: 216 92% 48%;
+
+  /* ── Typography ──────────────────────────────────────── */
+  --font-display: 'Rubik', system-ui, sans-serif;
+  --font-size-base: 16px;
+  --font-body: 'Rubik', system-ui, sans-serif;
+
+  /* ── Shadows ─────────────────────────────────────────── */
+  /* Cards, carousel items */
+  --shadow-sm: 0px 1px 2px 0px rgba(0, 0, 0, 0.04),
+    0px 4px 4px 0px rgba(0, 0, 0, 0.03), 0px 8px 5px 0px rgba(0, 0, 0, 0.02),
+    0px 14px 6px 0px rgba(0, 0, 0, 0.01);
+  /* Input elements */
+  --shadow-md: 0px 2px 4px -2px rgba(0, 0, 0, 0.1),
+    0px 4px 6px -1px rgba(0, 0, 0, 0.06), 0px 0px 6px 0px rgba(0, 0, 0, 0.04);
+  /* Modals, dialogs */
+  --shadow-lg: 1px 8px 17px 0px rgba(18, 18, 23, 0.1),
+    4px 30px 30px 0px rgba(18, 18, 23, 0.09),
+    8px 68px 41px 0px rgba(18, 18, 23, 0.05),
+    14px 121px 49px 0px rgba(18, 18, 23, 0.01);
+  /* Focus rings — derived from semantic tokens so they track theme presets.
+   * Phase-1 change: shadow-focus-blue / shadow-focus-btn now use --ring / --border;
+   * shadow-focus-error uses --destructive; shadow-focus-success uses --success. */
+  --shadow-focus: 0px 0px 0px 3px hsl(var(--border));
+  --shadow-focus-sm: 0px 0px 0px 2px hsl(var(--border));
+  --shadow-focus-blue: 0px 0px 0px 3px hsl(var(--focus-primary));
+  --shadow-focus-blue-sm: 0px 0px 0px 2px hsl(var(--focus-primary));
+  --shadow-focus-btn: 0px 0px 0px 3px hsl(var(--focus-primary) / 0.2);
+  --shadow-focus-error: 0px 0px 0px 3px hsl(var(--destructive) / 0.3);
+  --shadow-focus-success: 0px 0px 0px 3px hsl(var(--success) / 0.3);
+  --shadow-focus-form-success: 0px 0px 0px 3px hsl(var(--form-success) / 0.3);
+}
+
+.dark,
+[data-theme='dark'] {
+  /* ── Surface ─────────────────────────────────────────── */
+  /* Deep neutral with subtle blue undertone (#111318)      */
+  --background: 224 16% 9%;
+  --foreground: 210 20% 95%;
+
+  /* ── Card ────────────────────────────────────────────── */
+  --card: var(--background);
+  --card-foreground: 210 20% 95%;
+
+  /* ── Popover ─────────────────────────────────────────── */
+  --popover: var(--background);
+  --popover-foreground: 210 20% 95%;
+  --shadow-lg: 0px 12px 28px -6px rgba(0, 0, 0, 0.55),
+    0px 4px 10px -4px rgba(0, 0, 0, 0.4);
+
+  /* ── Primary ─────────────────────────────────────────── */
+  /* Inverted: Blue/700→Blue/300; active derived from --primary */
+  --primary: 216.05 100% 53.333%;
+  --primary-hover: 218.933 91.837% 48.039%;
+  --primary-active: 220.457 85.366% 40.196%;
+  --primary-foreground: 0 0% 100%;
+  --focus-primary: 216.05 100% 53.333%;
+  --shadow-focus-chip: 0 0 0 3px hsl(var(--focus-primary) / 0.5);
+  --shadow-focus-switch: 0 0 0 3px hsl(var(--focus-primary) / 0.5);
+  --shadow-focus-switch-unchecked: 0 0 0 3px hsl(var(--border));
+
+  /* Link interaction states — approved dark blue hover/active values. */
+  --link: #1170ff;
+  --link-hover: #0f48be;
+  --link-active: #134195;
+  --link-focus-background: hsl(var(--accent));
+  --link-focus-border: hsl(var(--input));
+  --link-focus-shadow: hsl(var(--border));
+  --link-secondary: hsl(var(--foreground));
+  --link-secondary-hover: var(--link-hover);
+  --link-secondary-active: var(--link-active);
+  --icon-foreground: hsl(var(--foreground));
+  --input-icon: hsl(var(--muted-foreground));
+
+  /* ── Secondary ───────────────────────────────────────── */
+  --secondary: 220 10% 18%;
+  --secondary-foreground: 210 14% 86%;
+
+  /* ── Muted (#1E2230) ───────────────────────────────── */
+  --muted: 225 14% 15%;
+  --muted-foreground: 215 12% 58%;
+  --toast-description: hsl(var(--muted-foreground));
+  --toast-close: hsl(var(--foreground));
+  --slider-track: 220 10% 18%;
+  --toggle-active: 220 10% 24%;
+  --button-outline-disabled: hsl(var(--muted));
+  --button-outline-disabled-foreground: hsl(var(--muted-foreground));
+  --button-outline-border: hsl(var(--input-hover));
+  --button-outline-hover: hsl(var(--secondary));
+  --button-outline-active: hsl(220 10% 24%);
+  --tabs-contained-hover: hsl(220 10% 24% / 0.36);
+  --search-recent-hover: var(--button-outline-active);
+  --checkbox-disabled: hsl(var(--muted));
+  --checkbox-disabled-foreground: hsl(var(--muted-foreground));
+  --slider-disabled-progress: 218 12% 31%;
+  --slider-disabled-thumb: 225 14% 15%;
+  --slider-disabled-thumb-border: 218 12% 31%;
+  --skeleton-start: 225 14% 15%;
+  --skeleton-end: 220 10% 18%;
+
+  /* ── Accent ────────────────────────────────────────── */
+  --accent: 220 14% 16%;
+  --accent-foreground: 210 80% 78%;
+  --chip-accent-foreground: 227.395 89.474% 73.922%;
+  --dropdown-hover: var(--secondary);
+  --calendar-range-marker: 220 14% 36%;
+  --chip-active: 216 32% 20%;
+  --chip-active-border: 216 42% 42%;
+  --rich-radio-border: var(--input);
+
+  /* ── Destructive ─────────────────────────────────────── */
+  /* Inverted but saturated for dark UI destructive actions  */
+  --destructive: 0 100% 60%;
+  --destructive-hover: 0 85.714% 50.588%;
+  --destructive-active: 0 87.879% 41.765%;
+  --destructive-foreground: 0 0% 100%;
+
+  /* ── Success ─────────────────────────────────────────── */
+  /* Success/600 (#00C332): brighter than Success/700 without neon glare. */
+  --success: 135.385 100% 38.235%;
+  --success-hover: 135.06 98.824% 31.961%;
+  --success-active: 139.677 83.784% 24.118%;
+  --form-success: var(--success);
+  --success-foreground: 0 0% 100%;
+  --badge-success: hsl(var(--success) / 0.16);
+  --badge-success-foreground: hsl(var(--success));
+  --badge-error: hsl(var(--destructive) / 0.16);
+  --badge-error-foreground: hsl(var(--destructive));
+
+  /* ── Warning ─────────────────────────────────────────── */
+  /* Inverted: Warning/500 → Warning/400 (#FFBE32) for dark */
+  --warning: 40.976 100% 59.804%;
+  --warning-hover: 38.449 100% 51.961%;
+  --warning-active: 33.75 100% 47.059%;
+  --warning-foreground: 33 100% 14%;
+
+  /* ── Node Wait (violet — workflow wait/delay accent) ── */
+  --node-wait: 270 60% 70%;
+
+  /* ── Status dots ─────────────────────────────────────── */
+  --status-active: var(--success);
+  --status-pending: 42 100% 60%;
+  --status-inactive: 215 12% 58%;
+
+  /* ── Automation trigger types (paired bg/fg) ────────── */
+  --trigger-event: 270 60% 70%;
+  --trigger-event-foreground: 270 80% 78%;
+  --trigger-schedule: 199 89% 65%;
+  --trigger-schedule-foreground: 199 89% 78%;
+  --trigger-form: 42 100% 60%;
+  --trigger-form-foreground: 42 100% 78%;
+  --trigger-webhook: 173 80% 55%;
+  --trigger-webhook-foreground: 173 80% 72%;
+  --trigger-offset: 346 77% 65%;
+  --trigger-offset-foreground: 346 77% 78%;
+
+  /* ── Border / Input / Ring ───────────────────────────── */
+  /* Inverted: Border/100 → Border/900; Input: Border/200 → Border/800 */
+  /* Neutral gray borders, clearly visible (#262B37)        */
+  --border: 218 14% 18%;
+  --input: 218 12% 24%;
+  --input-hover: 218 12% 31%;
+  --ring: var(--primary);
+
+  /* ── Sidebar — darker than main bg for depth (#0D0F15) ─ */
+  --sidebar-background: var(--background);
+  --sidebar-foreground: 210 20% 92%;
+  --sidebar-primary: 214 100% 68%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --avatar-background: var(--primary) / 0.1;
+  --sidebar-accent: var(--avatar-background);
+  --sidebar-accent-foreground: var(--primary);
+  --sidebar-border: 220 12% 15%;
+  --sidebar-ring: 214 100% 68%;
+
+  /* ── Focus rings (dark) — derived from semantic tokens ── */
+  --shadow-focus: 0px 0px 0px 3px hsl(var(--border));
+  --shadow-focus-sm: 0px 0px 0px 2px hsl(var(--border));
+  --shadow-focus-blue: 0px 0px 0px 3px hsl(var(--focus-primary));
+  --shadow-focus-blue-sm: 0px 0px 0px 2px hsl(var(--focus-primary));
+  --shadow-focus-btn: 0px 0px 0px 3px hsl(var(--focus-primary) / 0.2);
+  --shadow-focus-error: 0px 0px 0px 3px hsl(var(--destructive) / 0.3);
+  --shadow-focus-success: 0px 0px 0px 3px hsl(var(--success) / 0.3);
+  --shadow-focus-form-success: 0px 0px 0px 3px hsl(var(--form-success) / 0.3);
+}

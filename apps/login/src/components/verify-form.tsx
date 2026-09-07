@@ -12,6 +12,7 @@ import { AutoSubmitForm } from "./auto-submit-form";
 import { BackButton } from "./back-button";
 import { Button, ButtonVariants } from "./button";
 import { TextInput } from "./input";
+import { OTPInput } from "@/yeda/otp-input";
 import { Spinner } from "./spinner";
 import { Translated } from "./translated";
 
@@ -151,9 +152,7 @@ export function VerifyForm({ userId, loginName, organization, requestId, code, i
           </div>
         </Alert>
         <div className="mt-4">
-          <TextInput
-            type="text"
-            autoComplete="one-time-code"
+          <OTPInput
             autoFocus
             {...register("code", { required: t("verify.required.code") })}
             label={t("verify.labels.code")}
