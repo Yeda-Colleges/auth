@@ -85,24 +85,32 @@ p {
   color: #9fa3b5 !important;
 }
 
-/* ── User Avatar Pill in Light and Dark Mode ───────────────────── */
+/* ── User Email Display (Avatar Pill styled as in Figma) ───────── */
 .yeda-auth-page .border.rounded-full {
-  max-width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 0.25rem;
-  padding-right: 0.75rem;
-  border-color: #e8eaf5 !important;
-  background-color: transparent !important;
+  border: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  max-width: 100% !important;
+  justify-content: center !important;
+  margin-top: -0.5rem !important;
+  margin-bottom: 0.5rem !important;
 }
 
-.dark .yeda-auth-page .border.rounded-full,
-[data-theme='dark'] .yeda-auth-page .border.rounded-full {
-  border-color: rgba(255, 255, 255, 0.15) !important;
+.yeda-auth-page .border.rounded-full > div:first-child {
+  display: none !important; /* hide circle avatar icon */
+}
+
+.yeda-auth-page .border.rounded-full > a {
+  display: none !important; /* hide dropdown arrow */
 }
 
 .yeda-auth-page .border.rounded-full span {
-  color: #1b1b1e;
+  color: #1b1b1e !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: 100% !important;
 }
 
 .dark .yeda-auth-page .border.rounded-full span,

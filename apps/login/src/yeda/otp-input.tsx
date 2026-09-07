@@ -92,27 +92,28 @@ export const OTPInput = forwardRef<HTMLInputElement, Props>(function OTPInput(
           }}
         />
 
-        <div className="pointer-events-none flex justify-center gap-2" aria-hidden="true">
-          {cells.map((char, index) => {
-            const isActive = index === activeIndex || (activeIndex >= length && index === length - 1);
-            return (
-              <div
-                key={index}
-                className={[
-                  "flex h-14 flex-1 items-center justify-center rounded-lg border text-[1.25rem] font-semibold transition-colors",
-                  "bg-white dark:bg-[#111318] text-[#1b1b1e] dark:text-[#ffffff]",
-                  error
-                    ? "border-[hsl(var(--destructive))]"
-                    : isActive
-                      ? "border-[#0a59eb] dark:border-[#1170ff] ring-1 ring-[#0a59eb] dark:ring-[#1170ff]"
-                      : "border-[#d5d8ef] dark:border-[rgba(255,255,255,0.18)]",
-                  disabled ? "opacity-50" : "",
-                ].join(" ")}
-              >
-                {char || (isActive && !char ? <span className="animate-pulse font-normal opacity-50 text-[#0a59eb] dark:text-[#1170ff]">|</span> : "")}
-              </div>
-            );
-          })}
+        <div className="pointer-events-none flex justify-center" aria-hidden="true">
+          <div className="flex rounded-lg border border-[#d5d8ef] dark:border-[rgba(255,255,255,0.18)] divide-x divide-[#d5d8ef] dark:divide-[rgba(255,255,255,0.18)] overflow-hidden">
+            {cells.map((char, index) => {
+              const isActive = index === activeIndex || (activeIndex >= length && index === length - 1);
+              return (
+                <div
+                  key={index}
+                  className={[
+                    "flex h-14 w-12 sm:w-14 items-center justify-center text-[1.25rem] font-semibold transition-colors",
+                    "bg-white dark:bg-[#111318] text-[#1b1b1e] dark:text-[#ffffff]",
+                    isActive
+                      ? "ring-2 ring-inset ring-[#0a59eb] dark:ring-[#1170ff] bg-[#0a59eb]/5 dark:bg-[#1170ff]/10"
+                      : "",
+                    error ? "text-[hsl(var(--destructive))]" : "",
+                    disabled ? "opacity-50" : "",
+                  ].join(" ")}
+                >
+                  {char || (isActive && !char ? <span className="animate-pulse font-normal text-[#0a59eb] dark:text-[#1170ff]">|</span> : "")}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
 
