@@ -127,6 +127,20 @@ export default async function Page(props: { searchParams: Promise<any> }) {
             </Link>
           </div>
         )}
+
+        {(!redirectUri || isSamePage) && !(requestId && requestId.startsWith("device_")) && (
+          <div className="mt-8 flex w-full flex-col items-center space-y-3">
+            <Link href="/accounts" className="w-full">
+              <Button
+                type="button"
+                className="!h-14 w-full justify-center !rounded-xl !bg-[#0a59eb] !text-base !font-medium text-white shadow-none hover:!bg-[#0f48be] dark:!bg-[#1170ff] dark:hover:!bg-[#0a59eb]"
+                variant={ButtonVariants.Primary}
+              >
+                <Translated i18nKey="title" namespace="accounts" />
+              </Button>
+            </Link>
+          </div>
+        )}
       </div>
     </DynamicTheme>
   );
