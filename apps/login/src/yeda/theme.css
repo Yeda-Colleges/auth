@@ -87,7 +87,7 @@ p {
 }
 
 /* ── User Email Display (Avatar Pill styled as in Figma) ───────── */
-.yeda-auth-page .border.rounded-full {
+.yeda-auth-page > div > div:first-child .border.rounded-full {
   border: none !important;
   background: transparent !important;
   padding: 0 !important;
@@ -97,15 +97,15 @@ p {
   margin-bottom: 0.5rem !important;
 }
 
-.yeda-auth-page .border.rounded-full > div:first-child {
+.yeda-auth-page > div > div:first-child .border.rounded-full > div:first-child {
   display: none !important; /* hide circle avatar icon */
 }
 
-.yeda-auth-page .border.rounded-full > a {
+.yeda-auth-page > div > div:first-child .border.rounded-full > a {
   display: none !important; /* hide dropdown arrow */
 }
 
-.yeda-auth-page .border.rounded-full span {
+.yeda-auth-page > div > div:first-child .border.rounded-full span {
   color: #1b1b1e !important;
   font-weight: 600 !important;
   font-size: 1rem !important;
@@ -114,8 +114,8 @@ p {
   max-width: 100% !important;
 }
 
-.dark .yeda-auth-page .border.rounded-full span,
-[data-theme='dark'] .yeda-auth-page .border.rounded-full span {
+.dark .yeda-auth-page > div > div:first-child .border.rounded-full span,
+[data-theme='dark'] .yeda-auth-page > div > div:first-child .border.rounded-full span {
   color: #ffffff !important;
 }
 
@@ -138,6 +138,7 @@ p {
   font-size: 0.875rem !important;
   padding-left: 1rem !important;
   padding-right: 2rem !important;
+  margin: 0 !important;
   box-shadow: none !important;
   display: flex !important;
   align-items: center !important;
@@ -157,6 +158,7 @@ p {
   border: 1px solid #e8eaf5 !important;
   background-color: #ffffff !important;
   padding: 0.1875rem !important; /* 3px */
+  margin: 0 !important;
   box-shadow: none !important;
   display: flex !important;
   align-items: center !important;
@@ -173,12 +175,45 @@ p {
   height: 1.875rem !important; /* 30px */
   width: 1.875rem !important;  /* 30px */
   border-radius: 9999px !important;
-  border: none !important;
+  border: 1px solid transparent !important;
   box-shadow: none !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
   transition: all 0.2s ease !important;
+}
+
+/* Make all three icons identical in dimensions and optically centered */
+.yeda-auth-page > div > div:last-child div.flex.space-x-1 > button svg {
+  height: 1.05rem !important;
+  width: 1.05rem !important;
+  display: block !important;
+  flex-shrink: 0 !important;
+  margin: 0 auto !important;
+}
+
+/* The desktop monitor icon has a stand at the bottom making its screen sit visually too high: nudge it down 1.5px */
+.yeda-auth-page > div > div:last-child div.flex.space-x-1 > button:nth-child(2) svg {
+  transform: translateY(1.5px) !important;
+}
+
+/* Selected icon button highlight in light mode */
+.yeda-auth-page > div > div:last-child div.flex.space-x-1 > button[class*="bg-white"] {
+  background-color: #edeff2 !important;
+  border-color: #dee2e7 !important;
+  color: #0a59eb !important;
+}
+
+/* Selected icon button highlight in dark mode */
+.dark .yeda-auth-page > div > div:last-child div.flex.space-x-1 > button[class*="bg-white"],
+.dark .yeda-auth-page > div > div:last-child div.flex.space-x-1 > button[class*="dark:bg-gray-800"],
+[data-theme='dark'] .yeda-auth-page > div > div:last-child div.flex.space-x-1 > button[class*="bg-white"],
+[data-theme='dark'] .yeda-auth-page > div > div:last-child div.flex.space-x-1 > button[class*="dark:bg-gray-800"] {
+  background-color: #262b37 !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  color: #1170ff !important;
 }
 
 
