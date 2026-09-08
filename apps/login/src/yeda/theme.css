@@ -31,7 +31,6 @@ html.dark body,
 
 /* Target card only in the main content container, not the footer switchers */
 .yeda-auth-page > div > div:first-child [class*="bg-background-light"],
-.yeda-auth-page > div > div:first-child .rounded-lg,
 .yeda-auth-page > div > div:first-child .rounded-3xl {
   border: 1px solid var(--border-scale-100, #e8eaf5) !important;
   border-radius: 1.5rem !important; /* 24px */
@@ -40,10 +39,8 @@ html.dark body,
 }
 
 .dark .yeda-auth-page > div > div:first-child [class*="dark:bg-background-dark"],
-.dark .yeda-auth-page > div > div:first-child .rounded-lg,
 .dark .yeda-auth-page > div > div:first-child .rounded-3xl,
 [data-theme="dark"] .yeda-auth-page > div > div:first-child [class*="dark:bg-background-dark"],
-[data-theme="dark"] .yeda-auth-page > div > div:first-child .rounded-lg,
 [data-theme="dark"] .yeda-auth-page > div > div:first-child .rounded-3xl {
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-radius: 1.5rem !important;
@@ -113,6 +110,21 @@ p {
 .dark .yeda-auth-page .border.rounded-full span,
 [data-theme="dark"] .yeda-auth-page .border.rounded-full span {
   color: #ffffff !important;
+}
+
+/* ── OTP Input: Remove focus outline & ensure 8px corner radius ── */
+.yeda-otp-cells {
+  border-radius: 0.5rem !important; /* 8px */
+}
+
+input[autocomplete="one-time-code"],
+input[autocomplete="one-time-code"]:focus,
+input[autocomplete="one-time-code"]:focus-visible {
+  outline: none !important;
+  outline-offset: 0 !important;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  border-color: transparent !important;
 }
 
 /* ── Bottom Controls: Language & Theme Switchers ────────────────── */

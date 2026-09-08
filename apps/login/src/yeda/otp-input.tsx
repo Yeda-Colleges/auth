@@ -73,7 +73,7 @@ export const OTPInput = forwardRef<HTMLInputElement, Props>(function OTPInput(
           aria-label={label}
           aria-invalid={!!error}
           aria-describedby={error ? errorId : undefined}
-          className="absolute inset-0 z-10 h-full w-full cursor-text appearance-none !border-0 bg-transparent text-transparent caret-transparent !shadow-none outline-none disabled:cursor-not-allowed"
+          className="absolute inset-0 z-10 h-full w-full cursor-text appearance-none !border-0 bg-transparent text-transparent caret-transparent !shadow-none !outline-none focus:!ring-0 focus:!outline-none focus-visible:!ring-0 focus-visible:!outline-none disabled:cursor-not-allowed"
           onChange={(event) => {
             // Digits only, but strip after the browser has done paste/autofill.
             const next = event.target.value.replace(/\D/g, "").slice(0, length);
@@ -95,7 +95,7 @@ export const OTPInput = forwardRef<HTMLInputElement, Props>(function OTPInput(
         />
 
         <div className="pointer-events-none flex justify-center" aria-hidden="true">
-          <div className="flex divide-x divide-[#d5d8ef] overflow-hidden rounded-lg border border-[#d5d8ef] dark:divide-[rgba(255,255,255,0.18)] dark:border-[rgba(255,255,255,0.18)]">
+          <div className="yeda-otp-cells flex divide-x divide-[#d5d8ef] overflow-hidden rounded-lg border border-[#d5d8ef] dark:divide-[rgba(255,255,255,0.18)] dark:border-[rgba(255,255,255,0.18)]">
             {cells.map((char, index) => {
               const isActive = index === activeIndex || (activeIndex >= length && index === length - 1);
               return (
