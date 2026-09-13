@@ -5,7 +5,7 @@
     [isActive]="user.data()?.state === UserState.ACTIVE"
     [isInactive]="user.data()?.state === UserState.INACTIVE"
     stateTooltip="{{ 'USER.STATE.' + user.data()?.state | translate }}"
-    [hasBackButton]="false"
+    [hasBackButton]="['org.read'] | hasRole | async"
   >
     @if (user.data(); as user) {
       <cnsl-info-row topContent [user]="user" [loginPolicy]="(loginPolicy$ | async) ?? undefined" />

@@ -14,6 +14,7 @@ import { accountCard, adminLineAnimation, navAnimations, routeAnimations, toolba
 import { PrivacyPolicy } from './proto/generated/zitadel/policy_pb';
 import { AuthenticationService } from './services/authentication.service';
 import { GrpcAuthService } from './services/grpc-auth.service';
+import { KeyboardShortcutsService } from './services/keyboard-shortcuts/keyboard-shortcuts.service';
 import { ManagementService } from './services/mgmt.service';
 import { ThemeService } from './services/theme.service';
 import { UpdateService } from './services/update.service';
@@ -65,6 +66,7 @@ export class AppComponent {
     public domSanitizer: DomSanitizer,
     private router: Router,
     update: UpdateService,
+    keyboardShortcuts: KeyboardShortcutsService,
     private activatedRoute: ActivatedRoute,
     @Inject(DOCUMENT) private document: Document,
     private posthog: PosthogService,
@@ -204,6 +206,14 @@ export class AppComponent {
       this.domSanitizer.bypassSecurityTrustResourceUrl('assets/mdi/arrow-decision-outline.svg'),
     );
 
+    this.getProjectCount();
+
+    this.authService.activeOrgChanged.pipe(takeUntilDestroyed()).subscribe((org) => {
+      if (org?.id) {
+        this.getProjectCount();
+      }
+    });
+
     this.activatedRoute.queryParamMap
       .pipe(
         map((params) => params.get('org')),
@@ -291,6 +301,14 @@ export class AppComponent {
     });
   }
 
+  private getProjectCount(): void {
+    this.authService.isAllowed(['project.read']).subscribe((allowed) => {
+      if (allowed) {
+        this.mgmtService.listProjects(0, 0).then();
+        this.mgmtService.listGrantedProjects(0, 0).then();
+      }
+    });
+  }
   private setFavicon(theme: string): void {
     this.authService.labelpolicy$.pipe(startWith(undefined), takeUntilDestroyed(this.destroyRef)).subscribe((lP) => {
       if (theme === 'dark-theme' && lP?.iconUrlDark) {

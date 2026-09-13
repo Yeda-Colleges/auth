@@ -175,7 +175,7 @@
       }
     }
 
-    @if (!personalOnly && !isOnMe) {
+    @if (!isOnMe) {
       <div class="system-rel">
         @if (!isOnInstance && (['iam.read$', 'iam.write$'] | hasRole | async)) {
           <a id="systembutton" [routerLink]="['/instance']" class="iam-settings" mat-stroked-button>
@@ -233,7 +233,6 @@
             class="a_card"
             (closedCard)="showAccount = false"
             [user]="user"
-            [personalOnly]="personalOnly"
             [iamuser]="['iam.write$'] | hasRole | async"
           >
           </cnsl-accounts-card>

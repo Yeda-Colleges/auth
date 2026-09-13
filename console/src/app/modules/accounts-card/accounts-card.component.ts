@@ -46,7 +46,6 @@ export class AccountsCardComponent {
     this.user$.next(user);
   }
 
-  @Input() public personalOnly: boolean = false;
   @Input() public iamuser: boolean | null = false;
 
   @Output() public closedCard = new EventEmitter<void>();
@@ -64,9 +63,7 @@ export class AccountsCardComponent {
     private readonly featureService: NewFeatureService,
     private readonly toast: ToastService,
   ) {
-    this.sessions$ = defer(() => (this.personalOnly ? of([]) : this.getSessions())).pipe(
-      shareReplay({ refCount: true, bufferSize: 1 }),
-    );
+    this.sessions$ = this.getSessions().pipe(shareReplay({ refCount: true, bufferSize: 1 }));
   }
 
   private getUseLoginV2() {
