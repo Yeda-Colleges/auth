@@ -1164,7 +1164,7 @@
     },
     "MEMBERSHIPS": {
       "TITLE": "Zitadel Administrator Roles",
-      "DESCRIPTION": "These are all administrator roles of the user. You can modify them also on organization, project, or IAM detail pages.",
+      "DESCRIPTION": "Administrator roles assigned to your account.",
       "ORGCONTEXT": "You see all organizations and projects that are related to the currently selected organization.",
       "USERCONTEXT": "You see all organizations and projects to which you are authorized. Including other organizations.",
       "CREATIONDATE": "Creation Date",
@@ -2861,7 +2861,7 @@
     },
     "USER": {
       "TITLE": "Role Assignment",
-      "DESCRIPTION": "Define role assignments for the specified user. Note that you can only see entries of projects and users for which you have the permissions."
+      "DESCRIPTION": "Roles and permissions assigned to your account."
     },
     "CREATE": {
       "TITLE": "Create role assignment",

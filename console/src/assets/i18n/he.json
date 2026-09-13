@@ -283,7 +283,10 @@
     "PHONE": "מספר טלפון",
     "EMAILVERIFIED": "כתובת הדוא״ל אומתה",
     "PHONEVERIFIED": "מספר הטלפון אומת",
-    "NOTVERIFIED": "טרם אומת"
+    "NOTVERIFIED": "טרם אומת",
+    "TITLE": "פרטים אישיים",
+    "DESCRIPTION": "ניהול פרטים אישיים והגדרות אבטחה.",
+    "PHONEEMPTY": "לא הוגדר מספר טלפון"
   },
   "FOOTER": {
     "LINKS": {
@@ -295,11 +298,20 @@
     "REQUIRED": "זהו שדה חובה",
     "EMAIL": "כתובת הדוא״ל אינה תקינה",
     "PHONE": "מספר הטלפון אינו תקין",
-    "MINLENGTH": "הערך קצר מדי",
+    "MINLENGTH": "נדרשים לפחות {{requiredLength}} תווים.",
     "SYMBOLERROR": "נדרש תו מיוחד",
     "NUMBERERROR": "נדרשת ספרה",
     "UPPERCASEMISSING": "נדרשת אות גדולה באנגלית",
-    "LOWERCASEMISSING": "נדרשת אות קטנה באנגלית"
+    "LOWERCASEMISSING": "נדרשת אות קטנה באנגלית",
+    "ATLEASTONE": "יש להזין לפחות ערך אחד.",
+    "INVALID_FORMAT": "הפורמט אינו תקין.",
+    "NOTANEMAIL": "כתובת הדוא״ל אינה תקינה.",
+    "MAXLENGTH": "נדרשים פחות מ־{{requiredLength}} תווים.",
+    "PWNOTEQUAL": "הסיסמאות אינן תואמות.",
+    "TOKENINVALID": {
+      "TITLE": "תוקף ההתחברות פג",
+      "DESCRIPTION": "יש להיכנס שוב כדי להמשיך."
+    }
   },
   "GENDERS": {
     "0": "לא צוין",
@@ -316,5 +328,36 @@
     "LISTTITLE": "פעילות אחרונה",
     "BOTTOM": "אין פעולות נוספות",
     "LOADMORE": "הצגת פעולות נוספות"
+  },
+  "GRANTS": {
+    "TITLE": "הרשאות",
+    "EMPTY": "לא הוקצו הרשאות",
+    "USER": {
+      "TITLE": "ההרשאות שלי",
+      "DESCRIPTION": "התפקידים וההרשאות שהוקצו לחשבון שלך."
+    }
+  },
+  "METADATA": {
+    "TITLE": "מידע נוסף",
+    "KEY": "שם",
+    "VALUE": "ערך",
+    "EMPTY": "אין מידע נוסף"
+  },
+  "DESCRIPTIONS": {
+    "METADATA_TITLE": "מידע נוסף",
+    "USERS": {
+      "SELF": {
+        "METADATA": "מידע נוסף המשויך לחשבון שלך."
+      }
+    }
+  },
+  "PAGINATOR": {
+    "PREVIOUS": "הקודם",
+    "NEXT": "הבא",
+    "COUNT": "תוצאות בסך הכול",
+    "MORE": "עוד"
+  },
+  "TABLE": {
+    "NOROWS": "אין נתונים"
   }
 }
