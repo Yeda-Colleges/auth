@@ -255,7 +255,9 @@
       "DELETEACCOUNT": "מחיקת החשבון",
       "DELETEACCOUNT_DESC": "מחיקת החשבון תמנע כניסה ושימוש בשירותים המקושרים אליו.",
       "DELETEACCOUNT_BTN": "מחיקת החשבון שלי",
-      "DELETEACCOUNT_SUCCESS": "החשבון נמחק"
+      "DELETEACCOUNT_SUCCESS": "החשבון נמחק",
+      "STATE": "מצב",
+      "LOGINMETHODS": "מזהי כניסה"
     },
     "DIALOG": {
       "DELETE_BTN": "מחיקה",
@@ -286,7 +288,13 @@
     "NOTVERIFIED": "טרם אומת",
     "TITLE": "פרטים אישיים",
     "DESCRIPTION": "ניהול פרטים אישיים והגדרות אבטחה.",
-    "PHONEEMPTY": "לא הוגדר מספר טלפון"
+    "PHONEEMPTY": "לא הוגדר מספר טלפון",
+    "ID": "מזהה משתמש",
+    "DETAILS": {
+      "DATECREATED": "נוצר בתאריך",
+      "DATECHANGED": "עודכן בתאריך"
+    },
+    "EDITACCOUNT": "עריכת החשבון"
   },
   "FOOTER": {
     "LINKS": {
