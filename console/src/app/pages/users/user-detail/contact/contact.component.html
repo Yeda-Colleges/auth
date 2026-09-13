@@ -2,7 +2,7 @@
   <div class="contact-method-row">
     <div class="left">
       <span class="label cnsl-secondary-text">{{ 'USER.EMAIL' | translate }}</span>
-      <span class="name">{{ human.email?.email }}</span>
+      <bdi class="name" dir="ltr">{{ human.email?.email }}</bdi>
       @if (isEmailVerified) {
         <span class="contact-state verified">{{ 'USER.EMAILVERIFIED' | translate }}</span>
       }
@@ -40,7 +40,7 @@
   <div class="contact-method-row">
     <div class="left">
       <span class="label cnsl-secondary-text">{{ 'USER.PHONE' | translate }}</span>
-      <cnsl-phone-detail [phone]="human.phone?.phone"></cnsl-phone-detail>
+      <bdi dir="ltr"><cnsl-phone-detail [phone]="human.phone?.phone"></cnsl-phone-detail></bdi>
       @if (isPhoneVerified) {
         <span class="contact-state verified">{{ 'USER.PHONEVERIFIED' | translate }}</span>
       }

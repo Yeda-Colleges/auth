@@ -383,7 +383,8 @@
     "error": {
       "title": "שגיאה",
       "description": "אירעה שגיאה בעת הניסיון להיכנס."
-    }
+    },
+    "manageAccount": "ניהול החשבון שלי"
   },
   "verify": {
     "userIdMissing": "לא סופק מזהה משתמש",

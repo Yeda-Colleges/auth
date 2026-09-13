@@ -3,16 +3,10 @@ import { Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { Buffer } from 'buffer';
 import { defer, EMPTY, lastValueFrom, Observable, of, shareReplay, Subject, switchMap } from 'rxjs';
 import { ChangeType } from 'src/app/modules/changes/changes.component';
 import { phoneValidator, requiredValidator } from 'src/app/modules/form-field/validators/validators';
 import { InfoDialogComponent, InfoDialogData, InfoDialogResult } from 'src/app/modules/info-dialog/info-dialog.component';
-import {
-  MetadataDialogComponent,
-  MetadataDialogData,
-} from 'src/app/modules/metadata/metadata-dialog/metadata-dialog.component';
-import { PolicyComponentServiceType } from 'src/app/modules/policies/policy-component-types.enum';
 import { SidenavSetting } from 'src/app/modules/sidenav/sidenav.component';
 import { UserGrantContext } from 'src/app/modules/user-grants/user-grants-datasource';
 import { WarnDialogComponent } from 'src/app/modules/warn-dialog/warn-dialog.component';
@@ -28,7 +22,6 @@ import { catchError, filter, map, startWith } from 'rxjs/operators';
 import { pairwiseStartWith } from 'src/app/utils/pairwiseStartWith';
 import { NewAuthService } from 'src/app/services/new-auth.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { NewMgmtService } from 'src/app/services/new-mgmt.service';
 import { Metadata } from '@zitadel/proto/zitadel/metadata_pb';
 import { UserService } from 'src/app/services/user.service';
 import { LoginPolicy } from '@zitadel/proto/zitadel/policy_pb';
@@ -64,7 +57,6 @@ export class AuthUserDetailComponent implements OnInit {
     {
       id: 'metadata',
       i18nKey: 'USER.SETTINGS.METADATA',
-      requiredRoles: { [PolicyComponentServiceType.MGMT]: ['user.read'] },
     },
   ];
   protected readonly metadata$: Observable<MetadataQuery>;
@@ -97,14 +89,13 @@ export class AuthUserDetailComponent implements OnInit {
     public langSvc: LanguagesService,
     private readonly route: ActivatedRoute,
     private readonly newAuthService: NewAuthService,
-    private readonly newMgmtService: NewMgmtService,
     private readonly userService: UserService,
     private readonly destroyRef: DestroyRef,
     private readonly queryClient: QueryClient,
   ) {
     this.metadata$ = this.getMetadata$().pipe(shareReplay({ refCount: true, bufferSize: 1 }));
 
-    this.loginPolicy$ = defer(() => this.newMgmtService.getLoginPolicy()).pipe(
+    this.loginPolicy$ = defer(() => this.newAuthService.getMyLoginPolicy()).pipe(
       catchError(() => EMPTY),
       map(({ policy }) => policy),
       filter(Boolean),
@@ -203,7 +194,7 @@ export class AuthUserDetailComponent implements OnInit {
     }
 
     try {
-      await this.userService.updateUser({ userId: user.userId, username });
+      await this.grpcAuthService.updateMyUserName(username);
       this.toast.showInfo('USER.TOAST.USERNAMECHANGED', true);
       await this.invalidateUser();
     } catch (error) {
@@ -211,19 +202,16 @@ export class AuthUserDetailComponent implements OnInit {
     }
   }
 
-  public async saveProfile(user: User, profile: HumanProfile) {
+  public async saveProfile(_user: User, profile: HumanProfile) {
     try {
-      await this.userService.updateUser({
-        userId: user.userId,
-        profile: {
-          givenName: profile.givenName,
-          familyName: profile.familyName,
-          nickName: profile.nickName,
-          displayName: profile.displayName,
-          preferredLanguage: profile.preferredLanguage,
-          gender: profile.gender,
-        },
-      });
+      await this.grpcAuthService.updateMyProfile(
+        profile.givenName,
+        profile.familyName,
+        profile.nickName,
+        profile.displayName,
+        profile.preferredLanguage,
+        profile.gender,
+      );
       this.toast.showInfo('USER.TOAST.SAVED', true);
       await this.invalidateUser();
     } catch (error) {
@@ -270,9 +258,9 @@ export class AuthUserDetailComponent implements OnInit {
     this.translate.use(language);
   }
 
-  public async resendEmailVerification(user: User) {
+  public async resendEmailVerification(_user: User) {
     try {
-      await this.newMgmtService.resendHumanEmailVerification(user.userId);
+      await this.grpcAuthService.resendMyEmailVerification();
       this.toast.showInfo('USER.TOAST.EMAILVERIFICATIONSENT', true);
       await this.invalidateUser();
     } catch (error) {
@@ -280,9 +268,9 @@ export class AuthUserDetailComponent implements OnInit {
     }
   }
 
-  public async resendPhoneVerification(user: User) {
+  public async resendPhoneVerification(_user: User) {
     try {
-      await this.newMgmtService.resendHumanPhoneVerification(user.userId);
+      await this.grpcAuthService.resendMyPhoneVerification();
       this.toast.showInfo('USER.TOAST.PHONEVERIFICATIONSENT', true);
       await this.invalidateUser();
     } catch (error) {
@@ -290,9 +278,9 @@ export class AuthUserDetailComponent implements OnInit {
     }
   }
 
-  public async deletePhone(user: User) {
+  public async deletePhone(_user: User) {
     try {
-      await this.userService.removePhone(user.userId);
+      await this.grpcAuthService.removeMyPhone();
       this.toast.showInfo('USER.TOAST.PHONEREMOVED', true);
       await this.invalidateUser();
     } catch (error) {
@@ -325,17 +313,13 @@ export class AuthUserDetailComponent implements OnInit {
       width: '400px',
     });
 
-    const { value, isVerified } = (await lastValueFrom(dialogRefEmail.afterClosed())) ?? {};
+    const { value } = (await lastValueFrom(dialogRefEmail.afterClosed())) ?? {};
     if (!value) {
       return;
     }
 
     try {
-      await this.userService.setEmail({
-        userId: user.userId,
-        email: value,
-        verification: isVerified ? { case: 'isVerified', value: isVerified } : { case: undefined },
-      });
+      await this.grpcAuthService.setMyEmail(value);
       this.toast.showInfo('USER.TOAST.EMAILSAVED', true);
       await this.invalidateUser();
     } catch (error) {
@@ -367,7 +351,7 @@ export class AuthUserDetailComponent implements OnInit {
     }
 
     try {
-      await this.userService.setPhone({ userId: user.userId, phone: formatted.phone });
+      await this.grpcAuthService.setMyPhone(formatted.phone);
       this.toast.showInfo('USER.TOAST.PHONESAVED', true);
       await this.invalidateUser();
     } catch (error) {
@@ -375,7 +359,7 @@ export class AuthUserDetailComponent implements OnInit {
     }
   }
 
-  public async deleteUser(user: User) {
+  public async deleteUser(_user: User) {
     const data = {
       confirmKey: 'USER.DIALOG.DELETE_BTN',
       cancelKey: 'ACTIONS.CANCEL',
@@ -394,33 +378,12 @@ export class AuthUserDetailComponent implements OnInit {
     }
 
     try {
-      await this.userService.deleteUser(user.userId);
+      await this.grpcAuthService.RemoveMyUser();
       this.toast.showInfo('USER.PAGES.DELETEACCOUNT_SUCCESS', true);
       this.auth.signout();
     } catch (error) {
       this.toast.showError(error);
     }
-  }
-
-  public async editMetadata(user: User, metadata: Metadata[]) {
-    const setFcn = (key: string, value: string) =>
-      this.newMgmtService.setUserMetadata({
-        key,
-        value: Buffer.from(value),
-        id: user.userId,
-      });
-    const removeFcn = (key: string) => this.newMgmtService.removeUserMetadata({ key, id: user.userId });
-
-    const dialogRef = this.dialog.open<MetadataDialogComponent, MetadataDialogData>(MetadataDialogComponent, {
-      data: {
-        metadata: [...metadata],
-        setFcn: setFcn,
-        removeFcn: removeFcn,
-      },
-    });
-
-    await lastValueFrom(dialogRef.afterClosed());
-    this.refreshMetadata$.next(true);
   }
 
   public humanUser(user: User | undefined): UserWithHumanType | undefined {

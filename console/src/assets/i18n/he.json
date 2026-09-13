@@ -1,0 +1,320 @@
+{
+  "YEDA": {
+    "LANGUAGE": "שפה",
+    "SIGNOUT": "יציאה",
+    "DARK": "ערכת נושא כהה",
+    "LIGHT": "ערכת נושא בהירה"
+  },
+  "ACTIONS": {
+    "ACTIONS": "פעולות",
+    "FILTER": "סינון",
+    "RENAME": "שינוי שם",
+    "SET": "הגדרה",
+    "COPY": "העתקה",
+    "COPIED": "הועתק ללוח",
+    "RESET": "איפוס",
+    "SHOW": "הצגה",
+    "HIDE": "הסתרה",
+    "SAVE": "שמירה",
+    "SAVENOW": "שמירה עכשיו",
+    "NEW": "חדש",
+    "ADD": "הוספה",
+    "CREATE": "יצירה",
+    "CONTINUE": "המשך",
+    "BACK": "חזרה",
+    "CLOSE": "סגירה",
+    "CLEAR": "ניקוי",
+    "CANCEL": "ביטול",
+    "INFO": "מידע",
+    "OK": "אישור",
+    "SELECT": "בחירה",
+    "VIEW": "הצגה",
+    "DELETE": "מחיקה",
+    "REMOVE": "הסרה",
+    "VERIFY": "אימות",
+    "FINISH": "סיום",
+    "CHANGE": "שינוי",
+    "REFRESH": "רענון",
+    "LOGIN": "כניסה",
+    "EDIT": "עריכה",
+    "SEND": "שליחה",
+    "NEWVALUE": "ערך חדש",
+    "PREVIOUS": "הקודם",
+    "NEXT": "הבא",
+    "MORE": "עוד",
+    "DOWNLOAD": "הורדה",
+    "APPLY": "החלה"
+  },
+  "USER": {
+    "SETTINGS": {
+      "TITLE": "הגדרות",
+      "GENERAL": "פרטים אישיים",
+      "SECURITY": "סיסמה ואבטחה",
+      "IDP": "חשבונות מקושרים",
+      "ROLEASSIGNMENTS": "הרשאות",
+      "MEMBERSHIPS": "תפקידי ניהול",
+      "METADATA": "מידע נוסף"
+    },
+    "PROFILE": {
+      "TITLE": "פרופיל",
+      "EMAIL": "דוא״ל",
+      "PHONE": "מספר טלפון",
+      "PHONE_HINT": "יש להזין קידומת מדינה עם הסימן + ולאחריה את מספר הטלפון.",
+      "PHONE_VERIFIED": "מספר הטלפון אומת",
+      "SEND_SMS": "שליחת SMS לאימות",
+      "SEND_EMAIL": "שליחת דוא״ל",
+      "USERNAME": "שם משתמש",
+      "CHANGEUSERNAME": "שינוי",
+      "CHANGEUSERNAME_TITLE": "שינוי שם משתמש",
+      "CHANGEUSERNAME_DESC": "יש להזין את שם המשתמש החדש.",
+      "FIRSTNAME": "שם פרטי",
+      "LASTNAME": "שם משפחה",
+      "NICKNAME": "כינוי",
+      "DISPLAYNAME": "שם לתצוגה",
+      "PREFERREDLOGINNAME": "שם כניסה",
+      "PREFERRED_LANGUAGE": "שפה",
+      "GENDER": "מגדר",
+      "PASSWORD": "סיסמה",
+      "COUNTRY": "מדינה",
+      "AVATAR": {
+        "UPLOADTITLE": "העלאת תמונת פרופיל",
+        "UPLOADBTN": "בחירת קובץ",
+        "UPLOAD": "העלאה",
+        "CURRENT": "התמונה הנוכחית",
+        "PREVIEW": "תצוגה מקדימה",
+        "DELETESUCCESS": "התמונה נמחקה",
+        "CROPPERERROR": "לא ניתן להעלות את התמונה. אפשר לנסות פורמט או גודל אחר."
+      }
+    },
+    "PASSWORD": {
+      "TITLE": "סיסמה",
+      "LABEL": "סיסמה חזקה עוזרת להגן על החשבון",
+      "DESCRIPTION": "הסיסמה החדשה צריכה לעמוד בדרישות הבאות.",
+      "OLD": "סיסמה נוכחית",
+      "NEW": "סיסמה חדשה",
+      "CONFIRM": "אימות הסיסמה החדשה",
+      "NEWINITIAL": "סיסמה",
+      "CONFIRMINITIAL": "אימות סיסמה",
+      "RESET": "איפוס סיסמה",
+      "SET": "שינוי סיסמה",
+      "RESENDNOTIFICATION": "שליחת קישור לאיפוס הסיסמה",
+      "REQUIRED": "יש למלא את שדות החובה.",
+      "MINLENGTHERROR": "נדרשים לפחות {{value}} תווים.",
+      "MAXLENGTHERROR": "נדרשים פחות מ־{{value}} תווים."
+    },
+    "PASSWORDLESS": {
+      "TITLE": "מפתחות גישה (Passkeys)",
+      "DESCRIPTION": "אפשר להוסיף מפתח גישה לכניסה באמצעות המכשיר או מפתח אבטחה.",
+      "SEND": "שליחת קישור להוספה",
+      "TABLETYPE": "סוג",
+      "TABLESTATE": "מצב",
+      "NAME": "שם",
+      "EMPTY": "אין מפתחות גישה",
+      "U2F": "הוספת מפתח גישה",
+      "U2F_DIALOG_TITLE": "אימות מפתח גישה",
+      "U2F_DIALOG_DESCRIPTION": "אפשר לתת למפתח שם שיעזור לזהות אותו בהמשך.",
+      "U2F_NAME": "שם מפתח הגישה",
+      "U2F_SUCCESS": "מפתח הגישה נוסף",
+      "U2F_ERROR": "לא ניתן להוסיף את מפתח הגישה.",
+      "STATE": {
+        "0": "לא ידוע",
+        "1": "טרם הופעל",
+        "2": "פעיל",
+        "3": "נמחק"
+      },
+      "TYPE": {
+        "0": "לא הוגדר",
+        "1": "קוד חד־פעמי",
+        "2": "מפתח גישה"
+      },
+      "DIALOG": {
+        "DELETE_TITLE": "הסרת מפתח גישה",
+        "DELETE_DESCRIPTION": "לא תהיה אפשרות להיכנס עם מפתח זה לאחר ההסרה. להסיר אותו?",
+        "ADD_TITLE": "הוספת מפתח גישה",
+        "ADD_DESCRIPTION": "איך להוסיף את מפתח הגישה?",
+        "SEND_DESCRIPTION": "שליחת קישור לכתובת הדוא״ל שלך.",
+        "SEND": "שליחת קישור",
+        "SENT": "הקישור נשלח. להמשך ההגדרה יש לפתוח את ההודעה.",
+        "QRCODE_DESCRIPTION": "יצירת קוד QR לסריקה במכשיר אחר.",
+        "QRCODE": "יצירת קוד QR",
+        "QRCODE_SCAN": "יש לסרוק את הקוד במכשיר שבו רוצים להוסיף מפתח גישה.",
+        "NEW_DESCRIPTION": "הוספת מפתח גישה במכשיר הזה.",
+        "NEW": "הוספה במכשיר הזה"
+      }
+    },
+    "MFA": {
+      "TITLE": "אימות דו־שלבי",
+      "DESCRIPTION": "שלב אימות נוסף עוזר להגן על החשבון שלך.",
+      "TABLETYPE": "סוג",
+      "TABLESTATE": "מצב",
+      "NAME": "שם",
+      "EMPTY": "לא הוגדר אמצעי אימות נוסף",
+      "ADD": "הוספת אמצעי אימות",
+      "OTP": "אפליקציית אימות (TOTP)",
+      "OTP_DIALOG_TITLE": "הוספת אפליקציית אימות",
+      "OTP_DIALOG_DESCRIPTION": "יש לסרוק את קוד ה־QR באפליקציית אימות ולהזין את הקוד שמופיע בה.",
+      "U2F": "מפתח אבטחה",
+      "U2F_DIALOG_TITLE": "אימות אמצעי האבטחה",
+      "U2F_DIALOG_DESCRIPTION": "אפשר לתת לאמצעי האימות שם.",
+      "U2F_SUCCESS": "אמצעי האימות נוסף",
+      "U2F_ERROR": "לא ניתן להשלים את ההגדרה.",
+      "U2F_NAME": "שם אמצעי האימות",
+      "OTPSMS": "קוד חד־פעמי ב־SMS",
+      "OTPEMAIL": "קוד חד־פעמי בדוא״ל",
+      "SETUPOTPSMSDESCRIPTION": "להשתמש במספר הטלפון הזה לאימות דו־שלבי?",
+      "OTPSMSSUCCESS": "האימות ב־SMS הוגדר",
+      "OTPSMSPHONEMUSTBEVERIFIED": "יש לאמת את מספר הטלפון לפני השימוש בשיטה הזו.",
+      "OTPEMAILSUCCESS": "האימות בדוא״ל הוגדר",
+      "STATE": {
+        "0": "לא ידוע",
+        "1": "טרם הופעל",
+        "2": "פעיל",
+        "3": "נמחק"
+      },
+      "TYPE": {
+        "0": "לא הוגדר",
+        "1": "קוד חד־פעמי",
+        "2": "מפתח אבטחה"
+      },
+      "DIALOG": {
+        "MFA_DELETE_TITLE": "הסרת אמצעי אימות",
+        "MFA_DELETE_DESCRIPTION": "לא תהיה אפשרות להשתמש באמצעי זה לאחר ההסרה. להסיר אותו?",
+        "ADD_MFA_TITLE": "הוספת אמצעי אימות",
+        "ADD_MFA_DESCRIPTION": "יש לבחור באחת מהאפשרויות הבאות."
+      }
+    },
+    "LOGINMETHODS": {
+      "TITLE": "פרטי קשר",
+      "DESCRIPTION": "פרטים אלה משמשים לאימות החשבון ולשחזור הגישה אליו.",
+      "EMAIL": {
+        "TITLE": "דוא״ל",
+        "VALID": "אומת",
+        "ISVERIFIED": "כתובת הדוא״ל אומתה",
+        "RESEND": "שליחה חוזרת של הודעת אימות",
+        "EDITTITLE": "שינוי כתובת דוא״ל",
+        "EDITDESC": "יש להזין את כתובת הדוא״ל החדשה."
+      },
+      "PHONE": {
+        "TITLE": "טלפון",
+        "VALID": "אומת",
+        "RESEND": "שליחה חוזרת של SMS לאימות",
+        "EDITTITLE": "שינוי מספר טלפון",
+        "EDITVALUE": "מספר טלפון",
+        "EDITDESC": "יש להזין את מספר הטלפון החדש.",
+        "DELETETITLE": "הסרת מספר טלפון",
+        "DELETEDESC": "להסיר את מספר הטלפון?",
+        "OTPSMSREMOVALWARNING": "מספר זה משמש לאימות דו־שלבי. לאחר ההסרה לא יהיה אפשר להשתמש בו."
+      },
+      "RESENDCODE": "שליחה חוזרת של הקוד",
+      "ENTERCODE": "אימות",
+      "ENTERCODE_DESC": "קוד אימות"
+    },
+    "EXTERNALIDP": {
+      "TITLE": "חשבונות מקושרים",
+      "DESC": "",
+      "IDPCONFIGID": "מזהה ספק",
+      "IDPNAME": "ספק",
+      "USERDISPLAYNAME": "שם בחשבון המקושר",
+      "EXTERNALUSERID": "מזהה חשבון מקושר",
+      "EMPTY": "אין חשבונות מקושרים",
+      "DIALOG": {
+        "DELETE_TITLE": "הסרת חשבון מקושר",
+        "DELETE_DESCRIPTION": "לא תהיה אפשרות להיכנס באמצעות חשבון זה לאחר הסרת הקישור. להמשיך?"
+      }
+    },
+    "TOAST": {
+      "SAVED": "הפרופיל נשמר",
+      "USERNAMECHANGED": "שם המשתמש שונה",
+      "EMAILSAVED": "כתובת הדוא״ל נשמרה",
+      "PHONESAVED": "מספר הטלפון נשמר",
+      "PHONEREMOVED": "מספר הטלפון הוסר",
+      "PHONEVERIFIED": "מספר הטלפון אומת",
+      "PHONEVERIFICATIONSENT": "קוד האימות נשלח לטלפון",
+      "EMAILVERIFICATIONSENT": "קוד האימות נשלח בדוא״ל",
+      "OTPREMOVED": "אמצעי האימות הוסר",
+      "U2FREMOVED": "מפתח האבטחה הוסר",
+      "PASSWORDLESSREMOVED": "מפתח הגישה הוסר",
+      "PASSWORDCHANGED": "הסיסמה שונתה",
+      "PASSWORDLESSREGISTRATIONSENT": "הקישור להוספת מפתח גישה נשלח"
+    },
+    "STATE": {
+      "0": "לא ידוע",
+      "1": "פעיל",
+      "2": "לא פעיל",
+      "3": "נמחק",
+      "4": "נעול",
+      "5": "טרם הופעל"
+    },
+    "GENDER": {
+      "0": "לא צוין",
+      "1": "זכר",
+      "2": "נקבה",
+      "3": "אחר"
+    },
+    "PAGES": {
+      "DELETEACCOUNT": "מחיקת החשבון",
+      "DELETEACCOUNT_DESC": "מחיקת החשבון תמנע כניסה ושימוש בשירותים המקושרים אליו.",
+      "DELETEACCOUNT_BTN": "מחיקת החשבון שלי",
+      "DELETEACCOUNT_SUCCESS": "החשבון נמחק"
+    },
+    "DIALOG": {
+      "DELETE_BTN": "מחיקה",
+      "DELETE_TITLE": "מחיקת החשבון",
+      "DELETE_AUTH_DESCRIPTION": "הפעולה בלתי הפיכה. למחוק את החשבון שלך?"
+    },
+    "MEMBERSHIPS": {
+      "TITLE": "תפקידי ניהול",
+      "DESCRIPTION": "תפקידי הניהול שהוקצו לחשבון שלך.",
+      "CREATIONDATE": "תאריך יצירה",
+      "CHANGEDATE": "עודכן לאחרונה",
+      "DISPLAYNAME": "שם",
+      "TYPE": "סוג",
+      "ORGID": "מזהה ארגון",
+      "TYPES": {
+        "UNKNOWN": "לא ידוע",
+        "ORG": "ארגון",
+        "PROJECT": "פרויקט",
+        "GRANTEDPROJECT": "פרויקט משותף"
+      }
+    },
+    "SIGNEDOUT": "יצאת מהחשבון",
+    "SIGNEDOUT_BTN": "כניסה מחדש",
+    "EMAIL": "דוא״ל",
+    "PHONE": "מספר טלפון",
+    "EMAILVERIFIED": "כתובת הדוא״ל אומתה",
+    "PHONEVERIFIED": "מספר הטלפון אומת",
+    "NOTVERIFIED": "טרם אומת"
+  },
+  "FOOTER": {
+    "LINKS": {
+      "TOS": "תנאי שימוש",
+      "PP": "מדיניות פרטיות"
+    }
+  },
+  "ERRORS": {
+    "REQUIRED": "זהו שדה חובה",
+    "EMAIL": "כתובת הדוא״ל אינה תקינה",
+    "PHONE": "מספר הטלפון אינו תקין",
+    "MINLENGTH": "הערך קצר מדי",
+    "SYMBOLERROR": "נדרש תו מיוחד",
+    "NUMBERERROR": "נדרשת ספרה",
+    "UPPERCASEMISSING": "נדרשת אות גדולה באנגלית",
+    "LOWERCASEMISSING": "נדרשת אות קטנה באנגלית"
+  },
+  "GENDERS": {
+    "0": "לא צוין",
+    "1": "זכר",
+    "2": "נקבה",
+    "3": "אחר"
+  },
+  "LANGUAGES": {
+    "he": "עברית",
+    "en": "English",
+    "uk": "Українська"
+  },
+  "CHANGES": {
+    "LISTTITLE": "פעילות אחרונה",
+    "BOTTOM": "אין פעולות נוספות",
+    "LOADMORE": "הצגת פעולות נוספות"
+  }
+}

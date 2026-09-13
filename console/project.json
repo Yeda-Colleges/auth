@@ -28,9 +28,15 @@
         "{projectRoot}/buf.gen.yaml",
         "{projectRoot}/package.json",
         "{workspaceRoot}/pnpm-lock.yaml",
-        { "dependentTasksOutputFiles": ".artifacts/bin/*/*/protoc-gen-js" },
-        { "dependentTasksOutputFiles": ".artifacts/bin/*/*/protoc-gen-grpc-web" },
-        { "dependentTasksOutputFiles": ".artifacts/bin/*/*/protoc-gen-openapiv2" }
+        {
+          "dependentTasksOutputFiles": ".artifacts/bin/*/*/protoc-gen-js"
+        },
+        {
+          "dependentTasksOutputFiles": ".artifacts/bin/*/*/protoc-gen-grpc-web"
+        },
+        {
+          "dependentTasksOutputFiles": ".artifacts/bin/*/*/protoc-gen-openapiv2"
+        }
       ],
       "outputs": ["{projectRoot}/src/app/proto/generated"]
     },
@@ -41,8 +47,12 @@
       },
       "cache": true,
       "inputs": [
-        { "runtime": "uname -s" },
-        { "runtime": "uname -m" },
+        {
+          "runtime": "uname -s"
+        },
+        {
+          "runtime": "uname -m"
+        },
         "{projectRoot}/scripts/install-proto-plugins.sh"
       ],
       "outputs": [
@@ -58,7 +68,8 @@
         "!{projectRoot}/dist/**/*",
         "!{projectRoot}/.angular/**/*",
         "{workspaceRoot}/pnpm-lock.yaml",
-        "{workspaceRoot}/docs/frameworks.json"
+        "{workspaceRoot}/docs/frameworks.json",
+        "{workspaceRoot}/design/yeda/**/*"
       ],
       "outputs": ["{projectRoot}/dist"]
     },

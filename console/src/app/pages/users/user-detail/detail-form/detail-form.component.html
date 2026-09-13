@@ -27,7 +27,7 @@
         <div class="usernamediv">
           <cnsl-form-field class="formfield">
             <cnsl-label>{{ 'USER.PROFILE.USERNAME' | translate }}</cnsl-label>
-            <input cnslInput formControlName="username" />
+            <input cnslInput dir="auto" formControlName="username" />
           </cnsl-form-field>
           <button [disabled]="disabled$ | async" type="button" mat-stroked-button class="edit" (click)="changeUsername()">
             {{ 'USER.PROFILE.CHANGEUSERNAME' | translate }}
@@ -37,19 +37,19 @@
       <div class="user-grid">
         <cnsl-form-field class="formfield">
           <cnsl-label>{{ 'USER.PROFILE.FIRSTNAME' | translate }}</cnsl-label>
-          <input cnslInput formControlName="givenName" />
+          <input cnslInput dir="auto" formControlName="givenName" />
         </cnsl-form-field>
         <cnsl-form-field class="formfield">
           <cnsl-label>{{ 'USER.PROFILE.LASTNAME' | translate }}</cnsl-label>
-          <input cnslInput formControlName="familyName" />
+          <input cnslInput dir="auto" formControlName="familyName" />
         </cnsl-form-field>
         <cnsl-form-field class="formfield">
           <cnsl-label>{{ 'USER.PROFILE.NICKNAME' | translate }}</cnsl-label>
-          <input cnslInput formControlName="nickName" />
+          <input cnslInput dir="auto" formControlName="nickName" />
         </cnsl-form-field>
         <cnsl-form-field class="formfield">
           <cnsl-label>{{ 'USER.PROFILE.DISPLAYNAME' | translate }}</cnsl-label>
-          <input cnslInput formControlName="displayName" />
+          <input cnslInput dir="auto" formControlName="displayName" />
         </cnsl-form-field>
         <cnsl-form-field class="formfield">
           <cnsl-label>{{ 'USER.PROFILE.GENDER' | translate }}</cnsl-label>

@@ -1,5 +1,10 @@
 <div class="theme-flex">
-  <button class="theme-setting-button" [ngClass]="{ active: darkTheme }" (click)="setTheme()">
+  <button
+    class="theme-setting-button"
+    [attr.aria-label]="'YEDA.DARK' | translate"
+    [ngClass]="{ active: darkTheme }"
+    (click)="setTheme()"
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -15,7 +20,12 @@
       />
     </svg>
   </button>
-  <button class="theme-setting-button" [ngClass]="{ active: !darkTheme }" (click)="setTheme()">
+  <button
+    class="theme-setting-button"
+    [attr.aria-label]="'YEDA.LIGHT' | translate"
+    [ngClass]="{ active: !darkTheme }"
+    (click)="setTheme()"
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"

@@ -857,7 +857,8 @@
       "error": {
         "title": "Error",
         "description": "An error occurred while trying to sign in."
-      }
+      },
+      "manageAccount": "Manage my account"
     },
     "verify": {
       "userIdMissing": "No userId provided!",
@@ -4649,7 +4650,8 @@
       "error": {
         "title": "Помилка",
         "description": "Сталася помилка під час спроби входу."
-      }
+      },
+      "manageAccount": "Керувати моїм акаунтом"
     },
     "verify": {
       "userIdMissing": "userId не надано!",
@@ -7494,7 +7496,8 @@
       "error": {
         "title": "שגיאה",
         "description": "אירעה שגיאה בעת הניסיון להיכנס."
-      }
+      },
+      "manageAccount": "ניהול החשבון שלי"
     },
     "verify": {
       "userIdMissing": "לא סופק מזהה משתמש",

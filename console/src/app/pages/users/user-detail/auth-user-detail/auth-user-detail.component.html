@@ -1,16 +1,12 @@
 <ng-container>
-  <cnsl-top-view
-    [title]="userName()"
-    sub="{{ user.data()?.preferredLoginName }}"
-    [isActive]="user.data()?.state === UserState.ACTIVE"
-    [isInactive]="user.data()?.state === UserState.INACTIVE"
-    stateTooltip="{{ 'USER.STATE.' + user.data()?.state | translate }}"
-    [hasBackButton]="['org.read'] | hasRole | async"
-  >
-    @if (user.data(); as user) {
-      <cnsl-info-row topContent [user]="user" [loginPolicy]="(loginPolicy$ | async) ?? undefined" />
-    }
-  </cnsl-top-view>
+  <section class="yeda-profile-heading">
+    <h1>
+      <bdi>{{ userName() }}</bdi>
+    </h1>
+    <p>
+      <bdi>{{ user.data()?.preferredLoginName }}</bdi>
+    </p>
+  </section>
 
   @if (user.isLoading()) {
     <div class="max-width-container">
@@ -133,8 +129,8 @@
                   'roleNamesList',
                   'actions',
                 ]"
-                [disableWrite]="(['user.grant.write$'] | hasRole | async) === false"
-                [disableDelete]="(['user.grant.delete$'] | hasRole | async) === false"
+                [disableWrite]="true"
+                [disableDelete]="true"
               >
               </cnsl-user-grants>
             </cnsl-card>
@@ -152,8 +148,7 @@
               <cnsl-metadata
                 [metadata]="metadataQuery.value"
                 [description]="'DESCRIPTIONS.USERS.SELF.METADATA' | translate"
-                [disabled]="(['user.write:' + user.userId, 'user.write'] | hasRole | async) === false"
-                (editClicked)="editMetadata(user, metadataQuery.value)"
+                [disabled]="true"
                 (refresh)="refreshMetadata$.next(true)"
                 [loading]="metadataQuery.state === 'loading'"
               ></cnsl-metadata>

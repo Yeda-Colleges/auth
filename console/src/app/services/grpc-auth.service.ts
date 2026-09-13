@@ -98,7 +98,7 @@ import { MetadataQuery } from '../proto/generated/zitadel/metadata_pb';
 import { ListQuery } from '../proto/generated/zitadel/object_pb';
 import { Org, OrgFieldName, OrgIDQuery, OrgQuery } from '../proto/generated/zitadel/org_pb';
 import { LabelPolicy, PrivacyPolicy } from '../proto/generated/zitadel/policy_pb';
-import { Gender, MembershipQuery, User, WebAuthNVerification } from '../proto/generated/zitadel/user_pb';
+import { MembershipQuery, User, WebAuthNVerification } from '../proto/generated/zitadel/user_pb';
 import { GrpcService } from './grpc.service';
 import { StorageKey, StorageLocation, StorageService } from './storage.service';
 
@@ -388,7 +388,7 @@ export class GrpcAuthService {
     nickName?: string,
     displayName?: string,
     preferredLanguage?: string,
-    gender?: Gender,
+    gender?: number,
   ): Promise<UpdateMyProfileResponse.AsObject> {
     const req = new UpdateMyProfileRequest();
     if (firstName) {

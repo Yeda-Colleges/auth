@@ -2903,5 +2903,11 @@
       "TITLE": "Activity",
       "DESCRIPTION": "Here you can see the latest events that have generated a user change."
     }
+  },
+  "YEDA": {
+    "LANGUAGE": "Language",
+    "SIGNOUT": "Sign out",
+    "DARK": "Dark theme",
+    "LIGHT": "Light theme"
   }
 }

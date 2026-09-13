@@ -151,7 +151,7 @@
         }
         @if (otpsecret) {
           <div class="otp-flex">
-            <span class="overflow-auto">{{ otpsecret }}</span>
+            <bdi dir="ltr" class="overflow-auto">{{ otpsecret }}</bdi>
             <button
               color="primary"
               [disabled]="copied === otpsecret"
@@ -173,7 +173,7 @@
       </div>
       <cnsl-form-field class="formfield" label="Access Code" required="true">
         <cnsl-label>Code</cnsl-label>
-        <input cnslInput [(ngModel)]="otpcode" />
+        <input cnslInput dir="ltr" inputmode="numeric" autocomplete="one-time-code" [(ngModel)]="otpcode" />
       </cnsl-form-field>
     </div>
   }
@@ -183,7 +183,7 @@
       <p>{{ 'USER.MFA.U2F_DIALOG_DESCRIPTION' | translate }}</p>
       <cnsl-form-field class="form-field" label="Name" required="true">
         <cnsl-label>{{ 'USER.MFA.U2F_NAME' | translate }}</cnsl-label>
-        <input cnslInput [(ngModel)]="u2fname" required (keydown.enter)="u2fname ? submitU2F() : null" />
+        <input cnslInput dir="auto" [(ngModel)]="u2fname" required (keydown.enter)="u2fname ? submitU2F() : null" />
       </cnsl-form-field>
       @if (u2fLoading) {
         <mat-spinner diameter="30"></mat-spinner>

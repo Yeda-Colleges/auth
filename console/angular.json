@@ -25,12 +25,8 @@
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets",
-              "src/manifest.webmanifest"
-            ],
-            "styles": ["src/styles.scss", "src/tailwind.css"],
+            "assets": ["src/favicon.ico", "src/assets", "src/manifest.webmanifest"],
+            "styles": ["src/styles.scss", "src/tailwind.css", "../design/yeda/tokens.css", "src/yeda/account.scss"],
             "scripts": ["./node_modules/tinycolor2/dist/tinycolor-min.js"],
             "stylePreprocessorOptions": {
               "sass": {

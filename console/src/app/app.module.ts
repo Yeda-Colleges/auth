@@ -1,3 +1,6 @@
+import { BidiModule } from '@angular/cdk/bidi';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import localeHe from '@angular/common/locales/he';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import localeBg from '@angular/common/locales/bg';
@@ -123,6 +126,8 @@ registerLocaleData(localeTr);
 i18nIsoCountries.registerLocale(require('i18n-iso-countries/langs/tr.json'));
 registerLocaleData(localeUk);
 i18nIsoCountries.registerLocale(require('i18n-iso-countries/langs/uk.json'));
+registerLocaleData(localeHe);
+i18nIsoCountries.registerLocale(require('i18n-iso-countries/langs/he.json'));
 registerLocaleData(localeAr);
 i18nIsoCountries.registerLocale(require('i18n-iso-countries/langs/ar.json'));
 
@@ -159,6 +164,7 @@ const authConfig: AuthConfig = {
     AppRoutingModule,
 
     CommonModule,
+    BidiModule,
     BrowserModule,
     HeaderModule,
     OAuthModule.forRoot(),
@@ -186,6 +192,14 @@ const authConfig: AuthConfig = {
     CdkOverlayOrigin,
   ],
   providers: [
+    {
+      provide: MAT_DIALOG_DEFAULT_OPTIONS,
+      useFactory: () => ({
+        get direction() {
+          return document.documentElement.dir === 'rtl' ? 'rtl' : 'ltr';
+        },
+      }),
+    },
     ThemeService,
     EnvironmentService,
     ExhaustedService,

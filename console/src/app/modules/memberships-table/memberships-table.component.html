@@ -84,14 +84,16 @@
                   </mat-chip-option>
                 }
               </mat-chip-listbox>
-              <button
-                matTooltip="{{ 'ACTIONS.EDIT' | translate }}"
-                (click)="goto(membership)"
-                mat-icon-button
-                class="goto-btn"
-              >
-                <mat-icon>navigate_next</mat-icon>
-              </button>
+              @if (userId) {
+                <button
+                  matTooltip="{{ 'ACTIONS.EDIT' | translate }}"
+                  (click)="goto(membership)"
+                  mat-icon-button
+                  class="goto-btn"
+                >
+                  <mat-icon>navigate_next</mat-icon>
+                </button>
+              }
             </div>
           </td>
         </ng-container>

@@ -1,3 +1,4 @@
+import { UserSchema } from '@zitadel/proto/zitadel/user/v2/user_pb';
 import { computed, Injectable, Signal } from '@angular/core';
 import { GrpcService } from './grpc.service';
 import {
@@ -68,7 +69,47 @@ export class UserService {
     const userId = this.userId();
     return queryOptions({
       queryKey: [userId, 'user'],
-      queryFn: userId ? () => this.getUserById(userId).then((resp) => resp.user) : skipToken,
+      queryFn: userId ? () => this.getCurrentUser() : skipToken,
+    });
+  }
+
+  private async getCurrentUser() {
+    // The Auth API derives the subject from the access token. No target ID is sent.
+    const { user } = await this.grpcService.authNew.getMyUser({});
+    if (!user || user.type.case !== 'human') {
+      throw new Error('A personal account is required');
+    }
+    const human = user.type.value;
+    return create(UserSchema, {
+      userId: user.id,
+      username: user.userName,
+      state: Number(user.state),
+      preferredLoginName: user.preferredLoginName,
+      loginNames: user.loginNames,
+      details: user.details
+        ? {
+            sequence: user.details.sequence,
+            creationDate: user.details.creationDate,
+            changeDate: user.details.changeDate,
+            resourceOwner: user.details.resourceOwner,
+          }
+        : undefined,
+      type: {
+        case: 'human',
+        value: {
+          profile: {
+            givenName: human.profile?.firstName,
+            familyName: human.profile?.lastName,
+            nickName: human.profile?.nickName,
+            displayName: human.profile?.displayName,
+            preferredLanguage: human.profile?.preferredLanguage,
+            gender: human.profile?.gender,
+            avatarUrl: human.profile?.avatarUrl,
+          },
+          email: human.email ? { email: human.email.email, isVerified: human.email.isEmailVerified } : undefined,
+          phone: human.phone ? { phone: human.phone.phone, isVerified: human.phone.isPhoneVerified } : undefined,
+        },
+      },
     });
   }
 

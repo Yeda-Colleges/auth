@@ -69,6 +69,16 @@ const routes: Routes = [
   },
 ];
 
+// Keep upstream modules available to the compiler, while the Yeda account
+// surface can match only personal routes. API isolation is enforced by ingress.
+for (const route of routes) {
+  if (!['me', 'me/password'].includes(route.path ?? '')) {
+    route.canMatch = [() => false];
+  }
+}
+
+routes.push({ path: '**', redirectTo: 'me' });
+
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],

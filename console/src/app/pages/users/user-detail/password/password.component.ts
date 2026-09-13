@@ -1,3 +1,4 @@
+import { GrpcAuthService } from 'src/app/services/grpc-auth.service';
 import { Component, computed, DestroyRef, OnInit } from '@angular/core';
 import { AbstractControl, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -32,6 +33,7 @@ export class PasswordComponent implements OnInit {
     private readonly fb: UntypedFormBuilder,
     private readonly userService: UserService,
     private readonly newAuthService: NewAuthService,
+    private readonly grpcAuthService: GrpcAuthService,
     private readonly toast: ToastService,
     private readonly breadcrumbService: BreadcrumbService,
     private readonly destroyRef: DestroyRef,
@@ -158,7 +160,7 @@ export class PasswordComponent implements OnInit {
     window.history.back();
   }
 
-  public async setPassword(form: UntypedFormGroup, user: User): Promise<void> {
+  public async setPassword(form: UntypedFormGroup, _user: User): Promise<void> {
     const currentPassword = this.currentPassword(form);
     const newPassword = this.newPassword(form);
 
@@ -167,17 +169,7 @@ export class PasswordComponent implements OnInit {
     }
 
     try {
-      await this.userService.setPassword({
-        userId: user.userId,
-        newPassword: {
-          password: newPassword.value,
-          changeRequired: false,
-        },
-        verification: {
-          case: 'currentPassword',
-          value: currentPassword.value,
-        },
-      });
+      await this.grpcAuthService.updateMyPassword(currentPassword.value, newPassword.value);
     } catch (error) {
       this.toast.showError(error);
       return;

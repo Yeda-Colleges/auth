@@ -15,14 +15,12 @@ export class ThemeService {
   public loading: boolean = false;
 
   constructor() {
-    const theme = localStorage.getItem('theme');
-    if (theme) {
-      if (theme === 'light-theme') {
-        this.setDarkTheme(false);
-      } else {
-        this.setDarkTheme(true);
-      }
-    }
+    const theme = localStorage.getItem('cp-theme');
+    this.setDarkTheme(
+      theme === 'dark' ||
+        theme === 'dark-theme' ||
+        ((!theme || theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches),
+    );
   }
 
   setDarkTheme(isDarkTheme: boolean): void {

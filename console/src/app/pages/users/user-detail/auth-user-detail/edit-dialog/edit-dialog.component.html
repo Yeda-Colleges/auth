@@ -27,6 +27,7 @@
           <cnsl-label>{{ data.labelKey | translate }}</cnsl-label>
           <input
             cnslInput
+            [attr.dir]="isPhone || data.type === EditDialogType.EMAIL ? 'ltr' : 'auto'"
             [formControlName]="controlKey"
             matTooltip="{{ 'USER.PROFILE.PHONE_HINT' | translate }}"
             [matTooltipDisabled]="!isPhone"
@@ -40,6 +41,7 @@
           <cnsl-label>{{ data.labelKey | translate }}</cnsl-label>
           <input
             cnslInput
+            [attr.dir]="isPhone || data.type === EditDialogType.EMAIL ? 'ltr' : 'auto'"
             [formControlName]="controlKey"
             matTooltip="{{ 'USER.PROFILE.PHONE_HINT' | translate }}"
             [matTooltipDisabled]="!isPhone"

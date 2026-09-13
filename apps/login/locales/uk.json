@@ -383,7 +383,8 @@
     "error": {
       "title": "Помилка",
       "description": "Сталася помилка під час спроби входу."
-    }
+    },
+    "manageAccount": "Керувати моїм акаунтом"
   },
   "verify": {
     "userIdMissing": "userId не надано!",

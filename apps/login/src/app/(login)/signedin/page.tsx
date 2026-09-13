@@ -116,6 +116,12 @@ export default async function Page(props: { searchParams: Promise<any> }) {
           </Alert>
         )}
 
+        {!(requestId && requestId.startsWith("device_")) && (
+          <a href="/ui/console/users/me" className="mt-6 block text-center underline underline-offset-4">
+            <Translated i18nKey="manageAccount" namespace="signedin" />
+          </a>
+        )}
+
         {redirectUri && !isSamePage && (
           <div className="mt-8 flex w-full flex-row items-center">
             <span className="flex-grow"></span>

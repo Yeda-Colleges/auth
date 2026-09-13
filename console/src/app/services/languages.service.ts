@@ -1,7 +1,7 @@
-import { forkJoin, Observable, ReplaySubject, Subscription } from 'rxjs';
+import { supportedLanguages } from '../utils/language';
+import { Observable, ReplaySubject } from 'rxjs';
 import { map, withLatestFrom } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { AdminService } from './admin.service';
 
 @Injectable({
   providedIn: 'root',
@@ -23,17 +23,10 @@ export class LanguagesService {
     }),
   );
 
-  constructor(private adminSvc: AdminService) {
-    const sub: Subscription = forkJoin([
-      this.adminSvc.getSupportedLanguages(),
-      this.adminSvc.getAllowedLanguages(),
-    ]).subscribe({
-      next: ([{ languagesList: supported }, { languagesList: allowed }]) => {
-        this.supportedSubject$.next(supported);
-        this.allowedSubject$.next(allowed);
-      },
-      complete: () => sub.unsubscribe(),
-    });
+  constructor() {
+    // UI translations are bundled locally; personal settings need no Admin API.
+    this.supportedSubject$.next(supportedLanguages);
+    this.allowedSubject$.next(supportedLanguages);
   }
 
   public newAllowed(languages: string[]) {

@@ -14,7 +14,6 @@ import { accountCard, adminLineAnimation, navAnimations, routeAnimations, toolba
 import { PrivacyPolicy } from './proto/generated/zitadel/policy_pb';
 import { AuthenticationService } from './services/authentication.service';
 import { GrpcAuthService } from './services/grpc-auth.service';
-import { KeyboardShortcutsService } from './services/keyboard-shortcuts/keyboard-shortcuts.service';
 import { ManagementService } from './services/mgmt.service';
 import { ThemeService } from './services/theme.service';
 import { UpdateService } from './services/update.service';
@@ -66,7 +65,6 @@ export class AppComponent {
     public domSanitizer: DomSanitizer,
     private router: Router,
     update: UpdateService,
-    keyboardShortcuts: KeyboardShortcutsService,
     private activatedRoute: ActivatedRoute,
     @Inject(DOCUMENT) private document: Document,
     private posthog: PosthogService,
@@ -87,6 +85,12 @@ export class AppComponent {
       'font-size: 16px',
     );
     console.log('%cIf you know exactly what you are doing, you should work for us', 'font-size: 16px');
+    this.translate.onLangChange.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(({ lang }) => {
+      this.language = lang;
+      const dir = ['he', 'ar'].includes(lang.split('-')[0]) ? 'rtl' : 'ltr';
+      this.document.documentElement.dir = dir;
+      this.overlayContainer.getContainerElement().dir = dir;
+    });
     this.setLanguage();
 
     this.matIconRegistry.addSvgIcon(
@@ -200,14 +204,6 @@ export class AppComponent {
       this.domSanitizer.bypassSecurityTrustResourceUrl('assets/mdi/arrow-decision-outline.svg'),
     );
 
-    this.getProjectCount();
-
-    this.authService.activeOrgChanged.pipe(takeUntilDestroyed()).subscribe((org) => {
-      if (org?.id) {
-        this.getProjectCount();
-      }
-    });
-
     this.activatedRoute.queryParamMap
       .pipe(
         map((params) => params.get('org')),
@@ -264,7 +260,8 @@ export class AppComponent {
   }
 
   public onSetTheme(theme: string): void {
-    localStorage.setItem('theme', theme);
+    localStorage.setItem('cp-theme', theme === 'dark-theme' ? 'dark' : 'light');
+    this.document.documentElement.classList.toggle('dark', theme === 'dark-theme');
     this.overlayContainer.getContainerElement().classList.remove(theme === 'dark-theme' ? 'light-theme' : 'dark-theme');
     this.overlayContainer.getContainerElement().classList.add(theme);
     this.componentCssClass = theme;
@@ -290,18 +287,15 @@ export class AppComponent {
       const lang = userprofile?.human?.profile?.preferredLanguage.match(supportedLanguagesRegexp)
         ? userprofile.human.profile?.preferredLanguage
         : fallbackLang;
-      this.translate.use(lang);
-      this.document.documentElement.lang = lang;
+      const saved = localStorage.getItem('yeda-account-language');
+      this.translate.use(saved && supportedLanguages.includes(saved) ? saved : lang);
     });
   }
 
-  private getProjectCount(): void {
-    this.authService.isAllowed(['project.read']).subscribe((allowed) => {
-      if (allowed) {
-        this.mgmtService.listProjects(0, 0).then();
-        this.mgmtService.listGrantedProjects(0, 0).then();
-      }
-    });
+  public selectLanguage(event: Event): void {
+    const value = (event.target as HTMLSelectElement).value;
+    this.translate.use(value);
+    localStorage.setItem('yeda-account-language', value);
   }
 
   private setFavicon(theme: string): void {

@@ -383,7 +383,8 @@
     "error": {
       "title": "Error",
       "description": "An error occurred while trying to sign in."
-    }
+    },
+    "manageAccount": "Manage my account"
   },
   "verify": {
     "userIdMissing": "No userId provided!",
