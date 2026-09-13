@@ -8,14 +8,16 @@ type Props = {
 /**
  * Yeda wordmark, aliased over ZITADEL's `@/components/logo` in tsconfig.json.
  * Keeping the override here instead of editing dynamic-theme.tsx leaves that
- * upstream file untouched across releases. Props are accepted and ignored: the
- * instance branding logo URLs are not used, the wordmark is shipped as markup.
+ * upstream file untouched across releases. Upstream controls the logo dimensions;
+ * the Yeda wordmark replaces only the branding asset.
  */
-export function Logo(_props: Props) {
+export function Logo({ height = 40, width = 147.5 }: Props) {
   return (
     <svg
       aria-label="Yeda"
-      className="h-11 w-auto fill-[#000f61] dark:fill-white"
+      className="h-auto fill-[#000f61] dark:fill-white"
+      height={height}
+      width={width}
       role="img"
       viewBox="0 0 118 44"
       xmlns="http://www.w3.org/2000/svg"
