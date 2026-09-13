@@ -1,4 +1,12 @@
 /* Yeda branding only. Upstream owns layout, spacing, sizing and interactions. */
+:root {
+  --theme-light-primary-500: #0a59eb !important;
+  --theme-light-primary-400: #1170ff !important;
+  --theme-dark-primary-500: #1170ff !important;
+  --theme-dark-primary-400: #288fff !important;
+  --theme-light-primary-contrast-500: #ffffff !important;
+  --theme-dark-primary-contrast-500: #ffffff !important;
+}
 body,
 .yeda-auth-page {
   background-color: #ffffff;
