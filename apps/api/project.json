@@ -28,7 +28,10 @@
             {
                 "env": "ZITADEL_GOFIPS140"
             },
-            "runtime"
+            "runtime",
+            {
+                "dependentTasksOutputFiles": "internal/api/ui/console/static/**/*"
+            }
         ]
     },
     "targets": {
