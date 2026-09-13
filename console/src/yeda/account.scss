@@ -207,10 +207,10 @@ cnsl-root .yeda-account .card .header .row .title {
     gap: 0.25rem 0.75rem;
   }
   cnsl-root .yeda-account .sidenav-settings-list .sidenav-setting-list-element.hide-on-mobile {
-    display: flex;
+    display: flex !important;
   }
   cnsl-root .yeda-account .sidenav-settings-list .sidenav-setting-list-element.mob-only {
-    display: none;
+    display: none !important;
   }
   cnsl-root .yeda-account .meta-wrapper > .main-content {
     padding-inline: 0 !important;
@@ -218,4 +218,8 @@ cnsl-root .yeda-account .card .header .row .title {
   cnsl-root .yeda-account .meta-wrapper > .meta {
     padding-inline: 0 !important;
   }
+}
+
+cnsl-root .yeda-account .table :is(.cnsl-table-action-wrapper, .cnsl-table-action) {
+  height: 44px;
 }

@@ -67,13 +67,8 @@ export class PasswordComponent implements OnInit {
   }
 
   private getUsername(user$: Observable<User>) {
-    const prefferedLoginName$ = user$.pipe(map((user) => user.preferredLoginName));
-
-    return this.activatedRoute.queryParamMap.pipe(
-      map((params) => params.get('username')),
-      filter(Boolean),
-      mergeWith(prefferedLoginName$),
-    );
+    // Display the authenticated subject, never a caller-supplied query hint.
+    return user$.pipe(map((user) => user.preferredLoginName));
   }
 
   private getBreadcrumb$(id$: Observable<string | undefined>, user$: Observable<User>): Observable<Breadcrumb[]> {
