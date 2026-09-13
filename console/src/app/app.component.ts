@@ -309,6 +309,7 @@ export class AppComponent {
       }
     });
   }
+
   private setFavicon(theme: string): void {
     this.authService.labelpolicy$.pipe(startWith(undefined), takeUntilDestroyed(this.destroyRef)).subscribe((lP) => {
       if (theme === 'dark-theme' && lP?.iconUrlDark) {
