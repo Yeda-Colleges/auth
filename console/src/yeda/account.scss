@@ -4,7 +4,8 @@
   font-weight: 300 900;
   font-display: swap;
 }
-/* Yeda adapter for upstream Console components; shared colors live in design/yeda. */
+
+/* Branding only: keep upstream geometry, layout and component behavior. */
 :root {
   --account-bg: #fff;
   --account-panel: #fff;
@@ -17,11 +18,6 @@
   --account-text: #fff;
   --account-border: #ffffff1f;
 }
-html,
-body {
-  background: var(--account-bg);
-  color: var(--account-text);
-}
 body,
 button,
 input,
@@ -31,195 +27,30 @@ textarea,
 .mat-mdc-dialog-container {
   font-family: var(--font-body);
 }
-.yeda-account {
-  min-height: 100dvh;
-  background: var(--account-bg);
+html,
+body,
+cnsl-root .main-container.yeda-account,
+cnsl-root .yeda-account .header-wrapper,
+cnsl-root .yeda-account .footer-wrapper {
+  background-color: var(--account-bg);
   color: var(--account-text);
 }
-.yeda-account-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  max-width: 1200px;
-  margin-inline: auto;
-  padding: 1.5rem;
-  width: 100%;
-  box-sizing: border-box;
-}
-.yeda-brand {
-  font-size: 1.75rem;
-  font-weight: 600;
-  color: var(--account-text);
-  text-decoration: none;
-}
-.yeda-account-controls {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-.yeda-account-controls :is(button, select) {
-  padding: 0.6rem 0.8rem;
-  border: 1px solid var(--account-border);
-  border-radius: 8px;
-  color: var(--account-text);
-  background: var(--account-panel);
-  min-height: 44px;
-}
-.yeda-account .router-container {
-  max-width: 1200px;
-  width: 100%;
-  margin-inline: auto;
-  padding: 1.5rem;
-  box-sizing: border-box;
-}
-.yeda-account .card {
-  border: 1px solid var(--account-border);
+cnsl-root .yeda-account .card,
+.cdk-overlay-container .mat-mdc-dialog-surface,
+.cdk-overlay-container .accounts-card {
+  border-color: var(--account-border);
   border-radius: 24px;
-  background: var(--account-panel);
-  box-shadow: none;
+  background-color: var(--account-panel);
+  color: var(--account-text);
 }
-.yeda-account :is(h1, h2, h3) {
+cnsl-root .yeda-account :is(h1, h2, h3) {
   font-family: var(--font-display);
 }
-.yeda-account :is(input, textarea) {
-  border-radius: 8px;
-}
-.yeda-account :is(button, a, input, select):focus-visible {
-  outline: 2px solid var(--blue-500);
-  outline-offset: 3px;
-}
-.yeda-account .sidenav-setting-list-element {
-  text-align: start !important;
-  min-height: 44px;
-}
-.yeda-account .sidenav-sticky-rel {
-  padding-inline: 0 2rem !important;
-}
-.yeda-account .meta-wrapper > .main-content {
-  padding-inline: 0 1rem;
-}
-.yeda-account .meta-wrapper > .meta {
-  padding-inline: 1rem 0;
-}
-.yeda-account :is(td, th) {
-  text-align: start;
-}
-.yeda-account :is(input[type='email'], input[type='tel'], input[inputmode='numeric']),
-.cdk-overlay-container :is(input[type='email'], input[type='tel'], input[inputmode='numeric']) {
-  direction: ltr;
-  text-align: start;
-}
-.yeda-sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip-path: inset(50%);
-}
-[dir='rtl'] .mat-icon-rtl-mirror {
-  transform: scaleX(-1);
-}
-@media (max-width: 600px) {
-  .yeda-account-header,
-  .yeda-account .router-container {
-    padding: 1rem;
-  }
-  .yeda-account .sidenav-sticky-rel {
-    position: static;
-    padding-inline: 0 !important;
-  }
-  .yeda-account .meta-wrapper > :is(.meta, .main-content) {
-    padding-inline: 0;
-  }
-}
-
-/* Component theme selectors and encapsulated styles otherwise win over the adapter. */
-cnsl-root .main-container.yeda-account {
-  background: var(--account-bg);
-}
-cnsl-root .yeda-account .card {
-  border-radius: 24px;
-  min-width: 0;
-}
-cnsl-root .yeda-account .card .header .title {
-  text-transform: none;
-  letter-spacing: normal;
-  font-weight: 500;
-}
-cnsl-root .yeda-account input {
+cnsl-root .yeda-account :is(input, .mat-mdc-raised-button, .mat-mdc-outlined-button),
+.cdk-overlay-container .mat-mdc-outlined-button {
   border-radius: 8px;
 }
 cnsl-root .yeda-account .mat-mdc-raised-button.mat-primary {
-  background: #1170ff;
+  background-color: #1170ff;
   color: #fff;
-  box-shadow: none;
-  border-radius: 8px;
-}
-.yeda-profile-heading {
-  padding-block: 0.5rem 1rem;
-}
-.yeda-profile-heading h1 {
-  margin-block: 0 0.5rem;
-  font-size: 1.75rem;
-  font-weight: 600;
-}
-.yeda-profile-heading p {
-  margin: 0;
-  opacity: 0.7;
-}
-.cdk-overlay-container .mat-mdc-dialog-surface {
-  border: 1px solid var(--account-border);
-  border-radius: 24px;
-  background: var(--account-panel);
-}
-@media (max-width: 600px) {
-  cnsl-root .yeda-account .card {
-    padding: 1rem;
-  }
-  cnsl-root .yeda-account .max-width-container {
-    padding-inline: 0;
-  }
-  cnsl-root .yeda-account .user-form-content {
-    flex-wrap: wrap;
-  }
-}
-
-/* Removal must be discoverable by keyboard and touch without a hover state. */
-cnsl-root .yeda-account .table .cnsl-table-action {
-  visibility: visible;
-  float: inline-end;
-  background: var(--account-panel);
-}
-cnsl-root .yeda-account .table .cnsl-table-action button {
-  min-width: 44px;
-  min-height: 44px;
-}
-cnsl-root .yeda-account .card .header .row .title {
-  text-transform: none;
-  letter-spacing: normal;
-}
-@media (max-width: 600px) {
-  cnsl-root .yeda-account .sidenav-settings-list .sidenav-sticky-rel {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 0.25rem 0.75rem;
-  }
-  cnsl-root .yeda-account .sidenav-settings-list .sidenav-setting-list-element.hide-on-mobile {
-    display: flex !important;
-  }
-  cnsl-root .yeda-account .sidenav-settings-list .sidenav-setting-list-element.mob-only {
-    display: none !important;
-  }
-  cnsl-root .yeda-account .meta-wrapper > .main-content {
-    padding-inline: 0 !important;
-  }
-  cnsl-root .yeda-account .meta-wrapper > .meta {
-    padding-inline: 0 !important;
-  }
-}
-
-cnsl-root .yeda-account .table :is(.cnsl-table-action-wrapper, .cnsl-table-action) {
-  height: 44px;
 }

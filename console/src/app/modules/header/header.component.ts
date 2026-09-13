@@ -16,6 +16,7 @@ import { Org } from '@zitadel/proto/zitadel/org_pb';
   standalone: false,
 })
 export class HeaderComponent {
+  @Input() public personalOnly: boolean = false;
   @Input() public isDarkTheme: boolean = true;
   @Input({ required: true }) public user!: User.AsObject;
   public showOrgContext: boolean = false;

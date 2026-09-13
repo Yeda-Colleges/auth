@@ -287,15 +287,8 @@ export class AppComponent {
       const lang = userprofile?.human?.profile?.preferredLanguage.match(supportedLanguagesRegexp)
         ? userprofile.human.profile?.preferredLanguage
         : fallbackLang;
-      const saved = localStorage.getItem('yeda-account-language');
-      this.translate.use(saved && supportedLanguages.includes(saved) ? saved : lang);
+      this.translate.use(lang);
     });
-  }
-
-  public selectLanguage(event: Event): void {
-    const value = (event.target as HTMLSelectElement).value;
-    this.translate.use(value);
-    localStorage.setItem('yeda-account-language', value);
   }
 
   private setFavicon(theme: string): void {

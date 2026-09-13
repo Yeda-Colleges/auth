@@ -8,7 +8,6 @@ import { ChangeType } from 'src/app/modules/changes/changes.component';
 import { phoneValidator, requiredValidator } from 'src/app/modules/form-field/validators/validators';
 import { InfoDialogComponent, InfoDialogData, InfoDialogResult } from 'src/app/modules/info-dialog/info-dialog.component';
 import { SidenavSetting } from 'src/app/modules/sidenav/sidenav.component';
-import { UserGrantContext } from 'src/app/modules/user-grants/user-grants-datasource';
 import { WarnDialogComponent } from 'src/app/modules/warn-dialog/warn-dialog.component';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Breadcrumb, BreadcrumbService, BreadcrumbType } from 'src/app/services/breadcrumb.service';
@@ -45,14 +44,12 @@ export class AuthUserDetailComponent implements OnInit {
   public userLoginMustBeDomain: boolean = false;
   protected readonly UserState = UserState;
 
-  protected USERGRANTCONTEXT: UserGrantContext = UserGrantContext.AUTHUSER;
   protected readonly refreshMetadata$ = new Subject<true>();
 
   protected readonly settingsList: SidenavSetting[] = [
     { id: 'general', i18nKey: 'USER.SETTINGS.GENERAL' },
     { id: 'security', i18nKey: 'USER.SETTINGS.SECURITY' },
     { id: 'idp', i18nKey: 'USER.SETTINGS.IDP' },
-    { id: 'grants', i18nKey: 'USER.SETTINGS.ROLEASSIGNMENTS' },
     { id: 'memberships', i18nKey: 'USER.SETTINGS.MEMBERSHIPS' },
     {
       id: 'metadata',

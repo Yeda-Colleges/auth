@@ -1,0 +1,21 @@
+/* Direction support is separate from branding; preserve upstream dimensions. */
+[dir='rtl'] .mat-icon-rtl-mirror {
+  transform: scaleX(-1);
+}
+[dir='rtl'] .sidenav-setting-list-element {
+  text-align: start !important;
+}
+[dir='rtl'] .sidenav-sticky-rel {
+  padding-inline: 0 2rem !important;
+}
+[dir='rtl'] .meta-wrapper > .main-content {
+  padding-inline: 1rem 0;
+}
+[dir='rtl'] .meta-wrapper > .meta {
+  padding-inline: 0 1rem;
+}
+.yeda-account :is(input[type='email'], input[type='tel'], input[inputmode='numeric']),
+.cdk-overlay-container :is(input[type='email'], input[type='tel'], input[inputmode='numeric']) {
+  direction: ltr;
+  text-align: start;
+}

@@ -1,225 +1,32 @@
-/*
- * Yeda theme layer for the ZITADEL Login UI.
- *
- * Loaded after ./tokens.css and after ZITADEL's globals.scss, so this file is
- * the only place that adapts upstream markup to the Yeda design. Keeping it a
- * separate file means no upstream stylesheet is edited and nothing here can
- * conflict on a release merge.
- */
-
-/* ── Page Background: clean and flat as in Figma ───────────────── */
+/* Yeda branding only. Upstream owns layout, spacing, sizing and interactions. */
 body,
 .yeda-auth-page {
   background-color: #ffffff;
   color: #1b1b1e;
   font-family: var(--font-display, "Rubik", sans-serif);
 }
-
 .dark body,
-html.dark body,
-[data-theme="dark"] body,
-.dark .yeda-auth-page,
-[data-theme="dark"] .yeda-auth-page {
+.dark .yeda-auth-page {
   background-color: #111318;
   color: #ffffff;
 }
-
-/* ── Card Styling: 1px border, rounded-[24px], NO box-shadow ──── */
-.yeda-auth-page [class*="max-w-[440px]"] {
-  max-width: 520px;
-}
-
-/* Target card only in the main content container, not the footer switchers */
 .yeda-auth-page > div > div:first-child [class*="bg-background-light"],
 .yeda-auth-page > div > div:first-child .rounded-3xl {
-  border: 1px solid var(--border-scale-100, #e8eaf5) !important;
-  border-radius: 1.5rem !important; /* 24px */
-  box-shadow: none !important;
+  border-color: #e8eaf5 !important;
+  border-radius: 24px !important;
   background-color: #ffffff !important;
 }
-
 .dark .yeda-auth-page > div > div:first-child [class*="dark:bg-background-dark"],
-.dark .yeda-auth-page > div > div:first-child .rounded-3xl,
-[data-theme="dark"] .yeda-auth-page > div > div:first-child [class*="dark:bg-background-dark"],
-[data-theme="dark"] .yeda-auth-page > div > div:first-child .rounded-3xl {
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  border-radius: 1.5rem !important;
-  box-shadow: none !important;
+.dark .yeda-auth-page > div > div:first-child .rounded-3xl {
+  border-color: #ffffff1f !important;
   background-color: #161821 !important;
 }
-
-/* ── Typography & Headings ─────────────────────────────────────── */
 h1,
-.ztdl-h1 {
-  color: #1b1b1e !important;
-  font-family: var(--font-display, "Rubik", sans-serif);
-  font-size: 1.75rem !important; /* 28px */
-  font-weight: 600 !important;
-  line-height: 1.25 !important;
-  text-align: center;
-}
-
-.dark h1,
-.dark .ztdl-h1,
-[data-theme="dark"] h1,
-[data-theme="dark"] .ztdl-h1 {
-  color: #ffffff !important;
-}
-
-/* ── Subtitle / Paragraphs ─────────────────────────────────────── */
+.ztdl-h1,
 .ztdl-p,
 p {
-  color: #606273;
   font-family: var(--font-display, "Rubik", sans-serif);
-  font-size: 1rem;
-  line-height: 1.5;
-  text-align: center;
 }
-
-.dark .ztdl-p,
-.dark p,
-[data-theme="dark"] .ztdl-p,
-[data-theme="dark"] p {
-  color: #9fa3b5 !important;
-}
-
-/* ── User Avatar Pill (Pill container with avatar and accounts dropdown) ── */
-.yeda-auth-page .border.rounded-full {
-  border: 1px solid var(--border-scale-100, #e8eaf5) !important;
-  background: #ffffff !important;
-  padding: 3px 8px 3px 3px !important;
-  margin-top: 0.5rem !important;
-  margin-bottom: 0.5rem !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  max-width: 100% !important;
-}
-
-.dark .yeda-auth-page .border.rounded-full,
-[data-theme="dark"] .yeda-auth-page .border.rounded-full {
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  background: #161821 !important;
-}
-
-.yeda-auth-page .border.rounded-full span {
-  color: #1b1b1e !important;
-  font-weight: 500 !important;
-  font-size: 0.875rem !important;
-}
-
-.dark .yeda-auth-page .border.rounded-full span,
-[data-theme="dark"] .yeda-auth-page .border.rounded-full span {
-  color: #ffffff !important;
-}
-
-/* ── OTP Input: Remove focus outline & ensure 8px corner radius ── */
-.yeda-otp-cells {
-  border-radius: 0.5rem !important; /* 8px */
-}
-
-input[autocomplete="one-time-code"],
-input[autocomplete="one-time-code"]:focus,
-input[autocomplete="one-time-code"]:focus-visible {
-  outline: none !important;
-  outline-offset: 0 !important;
-  box-shadow: none !important;
-  -webkit-box-shadow: none !important;
-  border-color: transparent !important;
-}
-
-/* ── Bottom Controls: Language & Theme Switchers ────────────────── */
-.yeda-auth-page > div > div:last-child {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  justify-content: flex-end !important;
-  gap: 0.75rem !important;
-}
-
-/* Language Switcher button */
-.yeda-auth-page > div > div:last-child [class*="w-32"] > button {
-  height: 2.375rem !important; /* 38px */
-  border-radius: 9999px !important; /* pill */
-  border: 1px solid #e8eaf5 !important;
-  background-color: #ffffff !important;
-  color: #1b1b1e !important;
-  font-size: 0.875rem !important;
-  padding-left: 1rem !important;
-  padding-right: 2rem !important;
-  margin: 0 !important;
-  box-shadow: none !important;
-  display: flex !important;
-  align-items: center !important;
-}
-
-.dark .yeda-auth-page > div > div:last-child [class*="w-32"] > button,
-[data-theme="dark"] .yeda-auth-page > div > div:last-child [class*="w-32"] > button {
-  border-color: rgba(255, 255, 255, 0.12) !important;
-  background-color: #161821 !important;
-  color: #ffffff !important;
-}
-
-/* Theme Switcher container */
-.yeda-auth-page > div > div:last-child div.flex.space-x-1 {
-  height: 2.375rem !important; /* 38px, matching LanguageSwitcher */
-  border-radius: 9999px !important; /* matching pill */
-  border: 1px solid #e8eaf5 !important;
-  background-color: #ffffff !important;
-  padding: 0.1875rem !important; /* 3px */
-  margin: 0 !important;
-  box-shadow: none !important;
-  display: flex !important;
-  align-items: center !important;
-}
-
-.dark .yeda-auth-page > div > div:last-child div.flex.space-x-1,
-[data-theme="dark"] .yeda-auth-page > div > div:last-child div.flex.space-x-1 {
-  border-color: rgba(255, 255, 255, 0.12) !important;
-  background-color: #161821 !important;
-}
-
-/* Theme Switcher inner icon buttons */
-.yeda-auth-page > div > div:last-child div.flex.space-x-1 > button {
-  height: 1.875rem !important; /* 30px */
-  width: 1.875rem !important; /* 30px */
-  border-radius: 9999px !important;
-  border: 1px solid transparent !important;
-  box-shadow: none !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  transition: all 0.2s ease !important;
-}
-
-/* Make all three icons identical in dimensions and optically centered */
-.yeda-auth-page > div > div:last-child div.flex.space-x-1 > button svg {
-  height: 1.05rem !important;
-  width: 1.05rem !important;
-  display: block !important;
-  flex-shrink: 0 !important;
-  margin: 0 auto !important;
-}
-
-/* The desktop monitor icon has a stand at the bottom making its screen sit visually too high: nudge it down 1.5px */
-.yeda-auth-page > div > div:last-child div.flex.space-x-1 > button:nth-child(2) svg {
-  transform: translateY(1.5px) !important;
-}
-
-/* Selected icon button highlight in light mode */
-.yeda-auth-page > div > div:last-child div.flex.space-x-1 > button[class*="bg-white"] {
-  background-color: #edeff2 !important;
-  border-color: #dee2e7 !important;
-  color: #0a59eb !important;
-}
-
-/* Selected icon button highlight in dark mode */
-.dark .yeda-auth-page > div > div:last-child div.flex.space-x-1 > button[class*="bg-white"],
-.dark .yeda-auth-page > div > div:last-child div.flex.space-x-1 > button[class*="dark:bg-gray-800"],
-[data-theme="dark"] .yeda-auth-page > div > div:last-child div.flex.space-x-1 > button[class*="bg-white"],
-[data-theme="dark"] .yeda-auth-page > div > div:last-child div.flex.space-x-1 > button[class*="dark:bg-gray-800"] {
-  background-color: #262b37 !important;
-  border-color: rgba(255, 255, 255, 0.15) !important;
-  color: #1170ff !important;
+.yeda-auth-page :is(input, button:not(.rounded-full)) {
+  border-radius: 8px;
 }

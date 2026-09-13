@@ -18,7 +18,7 @@
         <button
           (click)="setting$.set(setting)"
           class="sidenav-setting-list-element hide-on-mobile"
-          [ngClass]="{ active: setting$()?.id === setting.id }"
+          [ngClass]="{ active: setting$()?.id === setting.id, show: !setting$() }"
           [attr.data-e2e]="'sidenav-element-' + setting.id"
         >
           <span>{{ setting.i18nKey | translate }}</span>

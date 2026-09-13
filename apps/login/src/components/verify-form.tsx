@@ -4,13 +4,14 @@ import { Alert, AlertType } from "@/components/alert";
 import { handleServerActionResponse } from "@/lib/client-utils";
 import { UNKNOWN_USER_ID } from "@/lib/constants";
 import { resendVerification, sendVerification } from "@/lib/server/verify";
-import { OTPInput } from "@/yeda/otp-input";
 import { useTranslations } from "next-intl";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AutoSubmitForm } from "./auto-submit-form";
+import { BackButton } from "./back-button";
 import { Button, ButtonVariants } from "./button";
+import { TextInput } from "./input";
 import { Spinner } from "./spinner";
 import { Translated } from "./translated";
 
@@ -130,8 +131,29 @@ export function VerifyForm({ userId, loginName, organization, requestId, code, i
         </div>
       )}
       <form className="w-full">
-        <div>
-          <OTPInput
+        <Alert type={AlertType.INFO}>
+          <div className="flex flex-row">
+            <span className="mr-auto flex-1 text-left">
+              <Translated i18nKey="verify.noCodeReceived" namespace="verify" />
+            </span>
+            <button
+              aria-label="Resend Code"
+              disabled={loading}
+              type="button"
+              className="text-primary-light-500 hover:text-primary-light-400 dark:text-primary-dark-500 hover:dark:text-primary-dark-400 ml-4 cursor-pointer disabled:cursor-default disabled:text-gray-400 dark:disabled:text-gray-700"
+              onClick={() => {
+                resendCode();
+              }}
+              data-testid="resend-button"
+            >
+              <Translated i18nKey="verify.resendCode" namespace="verify" />
+            </button>
+          </div>
+        </Alert>
+        <div className="mt-4">
+          <TextInput
+            type="text"
+            autoComplete="one-time-code"
             autoFocus
             {...register("code", { required: t("verify.required.code") })}
             label={t("verify.labels.code")}
@@ -139,34 +161,18 @@ export function VerifyForm({ userId, loginName, organization, requestId, code, i
           />
         </div>
 
-        <div className="mt-4 flex flex-row items-center justify-center text-center text-sm text-[#606273] dark:text-[#9fa3b5]">
-          <span>
-            <Translated i18nKey="verify.noCodeReceived" namespace="verify" />{" "}
-          </span>
-          <button
-            aria-label="Resend Code"
-            disabled={loading}
-            type="button"
-            className="ml-1 cursor-pointer font-medium text-[#0a59eb] transition-colors hover:text-[#0f48be] disabled:cursor-default disabled:opacity-50 dark:text-[#288fff] hover:dark:text-[#819af8]"
-            onClick={() => {
-              resendCode();
-            }}
-            data-testid="resend-button"
-          >
-            <Translated i18nKey="verify.resendCode" namespace="verify" />
-          </button>
-        </div>
-
         {error && (
-          <div className="mt-4" data-testid="error">
+          <div className="py-4" data-testid="error">
             <Alert>{error}</Alert>
           </div>
         )}
 
-        <div className="mt-8 flex w-full flex-col items-center space-y-3">
+        <div className="mt-8 flex w-full flex-row items-center">
+          <BackButton />
+          <span className="flex-grow"></span>
           <Button
             type="submit"
-            className="!h-14 w-full justify-center !rounded-xl !bg-[#0a59eb] !text-base !font-medium text-white shadow-none hover:!bg-[#0f48be] dark:!bg-[#1170ff] dark:hover:!bg-[#0a59eb]"
+            className="self-end"
             variant={ButtonVariants.Primary}
             disabled={loading || !formState.isValid}
             onClick={handleSubmit(fcn)}
@@ -175,15 +181,6 @@ export function VerifyForm({ userId, loginName, organization, requestId, code, i
             {loading && <Spinner className="mr-2 h-5 w-5" />}
             <Translated i18nKey="verify.submit" namespace="verify" />
           </Button>
-
-          <button
-            type="button"
-            onClick={() => router.back()}
-            className="cursor-pointer py-1 text-sm font-medium text-[#0a59eb] transition-colors hover:text-[#0f48be] dark:text-[#288fff] hover:dark:text-[#819af8]"
-            data-testid="back-button"
-          >
-            <Translated i18nKey="back" namespace="common" />
-          </button>
         </div>
       </form>
     </>

@@ -1,22 +1,18 @@
 <div class="main-container yeda-account" [dir]="language === 'he' || language === 'ar' ? 'rtl' : 'ltr'">
-  <header class="yeda-account-header">
-    <a class="yeda-brand" routerLink="/users/me" aria-label="Yeda">Yeda</a>
-    <div class="yeda-account-controls">
-      <label>
-        <span class="yeda-sr-only">{{ 'YEDA.LANGUAGE' | translate }}</span>
-        <select [value]="language" (change)="selectLanguage($event)">
-          <option value="en" lang="en">English</option>
-          <option value="he" lang="he">עברית</option>
-          <option value="uk" lang="uk">Українська</option>
-        </select>
-      </label>
-      @if (authService.user | async) {
-        <button type="button" (click)="authenticationService.signout()">{{ 'YEDA.SIGNOUT' | translate }}</button>
-      }
+  @if (authService.user | async; as user) {
+    <cnsl-header
+      [personalOnly]="true"
+      [user]="user"
+      [isDarkTheme]="componentCssClass === 'dark-theme'"
+      (changedActiveOrg)="changedOrg()"
+    />
+  }
+
+  <div class="router-container" [@routeAnimations]="prepareRoute(outlet)">
+    <div class="outlet">
+      <router-outlet class="outlet" #outlet="outlet"></router-outlet>
     </div>
-  </header>
-  <main class="router-container" id="account-content">
-    <router-outlet #outlet="outlet"></router-outlet>
-  </main>
+  </div>
+  <span class="fill-space"></span>
   <cnsl-footer></cnsl-footer>
 </div>
